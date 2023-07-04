@@ -90,7 +90,7 @@
     "test": "jest",
     "husky-setup": "husky install",
     "precommit": "lint-staged --config .husky/pre-commit.js",
-    "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx,.json ./src",
     "lint:fix": "npm run lint -- --fix"
   }
 }
