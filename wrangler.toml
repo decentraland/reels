@@ -1,6 +1,6 @@
 # Top-level configuration
-name = "homepage-site"
-main = "src/_worker.ts"
+name = "riils-site"
+main = "src/_worker.ts"/Users/braianmellor/Work/Decentraland/landing/tsconfig.worker.json
 compatibility_date = "2023-03-14"
 send_metrics = false
 
