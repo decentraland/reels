@@ -1,0 +1,39 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Permissions-Policy: autoplay=(self)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.segment.com https://cdn.rollbar.com https://connect.facebook.net https://hcaptcha.com https://*.hcaptcha.com; form-action 'self'; media-src https: blob:; font-src https: data:; prefetch-src https: data:; style-src 'unsafe-inline' https: data:; img-src https: data:; connect-src https: wss: blob: data:; frame-src https: dcl:; child-src https: blob:; object-src 'none'; frame-ancestors 'none'
+
+/*.js.map
+  Content-Type: application/json
+
+/*.css.map
+  Content-Type: application/json
+
+/ping
+  Content-Type: application/json
+  Cache-Control: public,max-age=31536000,immutable
+
+/.well-known/matrix/*
+  Content-Type: application/json
+  Cache-Control: public,max-age=31536000,immutable
+  Access-Control-Allow-Origin: *
+
+/static/*
+  Cache-Control: public,max-age=31536000,immutable
+
+/images/icons/*
+  Cache-Control: public,max-age=31536000,immutable
+
+/images/ui/*
+  Cache-Control: public,max-age=31536000,immutable
+
+/whitepaper.pdf
+  Cache-Control: public,max-age=31536000,immutable
+
+/whitepaper-kr.pdf
+  Cache-Control: public,max-age=31536000,immutable
+
+/whitepaper-cn.pdf
+  Cache-Control: public,max-age=31536000,immutable
