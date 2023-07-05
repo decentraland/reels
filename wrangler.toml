@@ -1,0 +1,9 @@
+# Top-level configuration
+name = "reels-site"
+main = "src/_worker.ts"
+compatibility_date = "2023-03-14"
+send_metrics = false
+
+workers_dev = false
+route = { pattern = "reels.decentraland.zone/*", zone_name = "reels.decentraland.zone" }
+tsconfig = "./tsconfig.worker.json"
