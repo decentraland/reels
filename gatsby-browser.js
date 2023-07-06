@@ -42,13 +42,7 @@ export const wrapRootElement = ({ element }) => (
 )
 
 export const wrapPageElement = ({ element, props }) => {
-  return (
-    <IntlProvider {...props.pageContext.intl}>
-      <Layout {...props} rightMenu={<Menu />} activePage="reels">
-        {element}
-      </Layout>
-    </IntlProvider>
-  )
+  return <IntlProvider {...props.pageContext.intl}>{element}</IntlProvider>
 }
 
 export const onClientEntry = () => {
