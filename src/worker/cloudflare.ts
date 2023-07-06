@@ -1,5 +1,29 @@
 import { OpenGraphWriter, OpenGraphWriterOptions } from "./writer"
 
+import type { RouteContext } from "@worker-tools/router"
+
+export type RouteContextWithAssets = RouteContext & {
+  env: { ASSETS: { fetch: typeof fetch } }
+}
+
+export async function fetchAsset(
+  pathname: string,
+  req: Request,
+  ctx: RouteContextWithAssets
+) {
+  const url = new URL(req.url)
+  url.pathname = pathname
+
+  console.log(
+    "fetchAsset:",
+    "feching asset",
+    url.toString(),
+    "instead of",
+    req.url
+  )
+  return ctx.env.ASSETS.fetch(url.toString())
+}
+
 export function attachOpenGraph(
   res: Response,
   options: OpenGraphWriterOptions | null = null

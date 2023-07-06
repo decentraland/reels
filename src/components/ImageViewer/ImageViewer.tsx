@@ -13,7 +13,6 @@ export type ImageViewerProps = {
 }
 
 export default React.memo(function ImageViewer(props: ImageViewerProps) {
-  console.log("props: ", props)
   const { image, className } = props
   return (
     <div className={TokenList.join(["image-viewer__container", className])}>

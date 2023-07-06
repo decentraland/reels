@@ -23,7 +23,6 @@ import "decentraland-gatsby/dist/variables.css"
 // eslint-disable-next-line css-import-order/css-import-order
 import "./src/theme.css"
 
-import AuthProvider from "decentraland-gatsby/dist/context/Auth/AuthProvider"
 import FeatureFlagProvider from "decentraland-gatsby/dist/context/FeatureFlag/FeatureFlagProvider"
 import { IntlProvider } from "decentraland-gatsby/dist/plugins/intl"
 import segment from "decentraland-gatsby/dist/utils/development/segment"
@@ -31,11 +30,9 @@ import segment from "decentraland-gatsby/dist/utils/development/segment"
 export const registerServiceWorker = () => true
 
 export const wrapRootElement = ({ element }) => (
-  <AuthProvider>
-    <FeatureFlagProvider applicationName={["reels", "dapps"]}>
-      {element}
-    </FeatureFlagProvider>
-  </AuthProvider>
+  <FeatureFlagProvider applicationName={["reels", "dapps"]}>
+    {element}
+  </FeatureFlagProvider>
 )
 
 export const wrapPageElement = ({ element, props }) => {
