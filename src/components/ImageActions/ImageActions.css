@@ -29,8 +29,8 @@
 }
 
 .image-actions .link-copy::after {
-  content: 'copied!';
-  background-color: #716B7C;
+  content: "copied!";
+  background-color: #716b7c;
   color: #fff;
   position: absolute;
   padding: 5px 10px;
@@ -48,11 +48,11 @@
   opacity: 1;
 }
 
-.image-actions>img:first-child {
+.image-actions > img:first-child {
   margin-left: 0;
 }
 
-.image-actions>img:last-child {
+.image-actions > img:last-child {
   margin-right: 0;
 }
 
@@ -61,5 +61,5 @@
   height: 21px;
   margin-left: 10px;
   margin-right: 10px;
-  background-color: #716B7C;
+  background-color: #716b7c;
 }
