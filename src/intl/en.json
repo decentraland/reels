@@ -1,8 +1,17 @@
 {
-  "image_actions": {
-    "image_share": "This is my image",
-    "uri": {
-      "twitter": "https://twitter.com/intent/tweet?text={description} {url}"
+  "component": {
+    "image_actions": {
+      "image_share": "This is my image",
+      "uri": {
+        "twitter": "https://twitter.com/intent/tweet?text={description} {url}"
+      }
+    },
+    "metadata": {
+      "title": "information",
+      "place": "place",
+      "people": "people",
+      "wearable": "wearable",
+      "jump_in": "jump in"
     }
   }
 }

@@ -15,8 +15,12 @@ import { ImageViewerProps } from "../ImageViewer/ImageViewer"
 
 import "./ImageActions.css"
 
-export default React.memo(function ImageActions(props: ImageViewerProps) {
-  const { image, className } = props
+type ImageActionsProps = ImageViewerProps & {
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+}
+
+export default React.memo(function ImageActions(props: ImageActionsProps) {
+  const { image, className, onClick } = props
 
   const l = useFormatMessage()
   const track = useTrackContext()
@@ -26,9 +30,9 @@ export default React.memo(function ImageActions(props: ImageViewerProps) {
   const twitterLink = useMemo(
     () =>
       encodeURI(
-        l("image_actions.uri.twitter", {
+        l("component.image_actions.uri.twitter", {
           url: locations.image(image.id),
-          description: l("image_actions.image_share"),
+          description: l("component.image_actions.image_share"),
         })
       ),
     [image]
@@ -93,7 +97,7 @@ export default React.memo(function ImageActions(props: ImageViewerProps) {
       </div>
       <img src={downloadIcon} alt="Download" onClick={handleDownload} />
       <div className="image-actions__spacer" />
-      <img src={infoIcon} alt="Info" className="info" />
+      <img src={infoIcon} alt="Info" className="info" onClick={onClick} />
     </div>
   )
 })

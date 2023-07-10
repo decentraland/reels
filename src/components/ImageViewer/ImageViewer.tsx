@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback, useState } from "react"
 
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 
@@ -14,13 +14,25 @@ export type ImageViewerProps = {
 
 export default React.memo(function ImageViewer(props: ImageViewerProps) {
   const { image, className } = props
+
+  const [showMetadata, setShowMetadata] = useState(false)
+  const handleShowMetadata = useCallback(() => {
+    setShowMetadata(!showMetadata)
+  }, [showMetadata, setShowMetadata])
+
   return (
-    <div className={TokenList.join(["image-viewer__container", className])}>
+    <div
+      className={TokenList.join([
+        "image-viewer__container",
+        className,
+        showMetadata && "show-metadata",
+      ])}
+    >
       <div
         className="image-viewer__image"
         style={{ backgroundImage: `url(${image.url})` }}
       ></div>
-      <ImageActions image={image} />
+      <ImageActions image={image} onClick={handleShowMetadata} />
     </div>
   )
 })

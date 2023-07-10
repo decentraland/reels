@@ -6,6 +6,7 @@ import { RouteComponentProps } from "@gatsbyjs/reach-router"
 import NotFound from "decentraland-gatsby/dist/components/Layout/NotFound"
 
 import ImageViewer from "../../components/ImageViewer/ImageViewer"
+import Metadata from "../../components/Metadata/Metadata"
 import useImageById from "../../hooks/useImageById"
 
 export type EventPageState = {
@@ -41,7 +42,14 @@ export default function ImagePage({
         <meta name="twitter:creator" content={"twitter:creator"} />
         <meta name="twitter:site" content={"twitter:site"} />
       </Helmet>
-      <div>{!photoState.loading && <ImageViewer image={photo!} />}</div>
+      <div>
+        {!photoState.loading && (
+          <>
+            <ImageViewer image={photo!} />
+            {photo!.metadata && <Metadata metadata={photo!.metadata} />}
+          </>
+        )}
+      </div>
     </>
   )
 }
