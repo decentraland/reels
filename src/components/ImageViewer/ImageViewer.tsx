@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react"
 
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
+import { Loader } from "decentraland-ui/dist/components/Loader/Loader"
 
 import { Image } from "../../@types/image"
 import ImageActions from "../ImageActions/ImageActions"
@@ -9,11 +10,12 @@ import "./ImageViewer.css"
 
 export type ImageViewerProps = {
   image: Image
+  loading: boolean
   className?: string
 }
 
 export default React.memo(function ImageViewer(props: ImageViewerProps) {
-  const { image, className } = props
+  const { image, loading, className } = props
 
   const [showMetadata, setShowMetadata] = useState(false)
   const handleShowMetadata = useCallback(() => {
@@ -30,9 +32,15 @@ export default React.memo(function ImageViewer(props: ImageViewerProps) {
     >
       <div
         className="image-viewer__image"
-        style={{ backgroundImage: `url(${image.url})` }}
-      ></div>
-      <ImageActions image={image} onClick={handleShowMetadata} />
+        style={{ backgroundImage: !loading ? `url(${image.url})` : "" }}
+      >
+        {loading && <Loader size="big" active />}
+      </div>
+      <ImageActions
+        image={image}
+        onClick={handleShowMetadata}
+        loading={loading}
+      />
     </div>
   )
 })

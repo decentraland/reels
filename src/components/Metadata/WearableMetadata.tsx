@@ -1,5 +1,6 @@
 import React from "react"
 
+import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import { ContentEntityWearable } from "decentraland-gatsby/dist/utils/api/Catalyst.types"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 
@@ -16,13 +17,17 @@ export default React.memo(function WearableMetadata(
 ) {
   const { wearableUrn, wearableContentEntity, className } = props
 
+  const l = useFormatMessage()
+
   return (
     <div
       className={TokenList.join(["wearable-metadata__container", className])}
     >
       <div className="wearable-metadata__image-container">
         <img
-          src={`https://peer.decentraland.org/lambdas/collections/contents/${wearableUrn}/thumbnail`}
+          src={l("component.metadata.wearable_thumbnail_url", {
+            wearableUrn: wearableUrn,
+          })}
         />
       </div>
       <span>{wearableContentEntity.metadata.name}</span>

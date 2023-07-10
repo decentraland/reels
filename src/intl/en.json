@@ -11,7 +11,9 @@
       "place": "place",
       "people": "people",
       "wearable": "wearable",
-      "jump_in": "jump in"
+      "jump_in": "jump in",
+      "wearable_thumbnail_url": "https://peer.decentraland.org/lambdas/collections/contents/{wearableUrn}/thumbnail",
+      "place_url": "https://peer.decentraland.org/lambdas/collections/contents/{wearableUrn}/thumbnail"
     }
   }
 }

@@ -26,10 +26,10 @@
 
 .image-viewer__image::after {
   content: "";
-  opacity: 0.3;
+  opacity: 0.7;
   background: linear-gradient(180deg, #161518 0%, rgba(22, 21, 24, 0) 100%);
   width: 100%;
-  height: 100%;
+  height: 100px;
   position: absolute;
 }
 

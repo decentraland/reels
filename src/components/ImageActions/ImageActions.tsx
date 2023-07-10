@@ -20,7 +20,7 @@ type ImageActionsProps = ImageViewerProps & {
 }
 
 export default React.memo(function ImageActions(props: ImageActionsProps) {
-  const { image, className, onClick } = props
+  const { image, loading, className, onClick } = props
 
   const l = useFormatMessage()
   const track = useTrackContext()
@@ -86,6 +86,8 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
     },
     [image, track]
   )
+
+  if (loading) return <></>
 
   return (
     <div className={TokenList.join(["image-actions", className])}>

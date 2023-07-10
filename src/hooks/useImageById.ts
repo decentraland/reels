@@ -41,9 +41,9 @@ export default function useImageById(id: string | undefined) {
         )
 
         imagesResult.metadata.visiblePeople.forEach((user) => {
-          user.wearablesContentEntity = user.wearables.map(
-            (wearable) => wearablesByUrn[wearable]
-          )
+          user.wearablesContentEntity = user.wearables
+            .map((wearable) => wearablesByUrn[wearable] || null)
+            .filter((wearable) => wearable !== null)
         })
       }
       return imagesResult

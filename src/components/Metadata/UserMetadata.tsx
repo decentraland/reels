@@ -8,6 +8,7 @@ import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic"
 
 import WearableMetadata from "./WearableMetadata"
 import { User } from "../../@types/image"
+import NoWearable from "../../images/wearable-shirt.svg"
 
 import "./UserMetadata.css"
 
@@ -27,12 +28,9 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
 
   const l = useFormatMessage()
   return (
-    <div
-      className={TokenList.join(["user-metadata", className])}
-      onClick={toggleWearables}
-    >
-      <div className="user-metadata__container">
-        <div className="user-metadata__wrapper" onClick={toggleWearables}>
+    <div className={TokenList.join(["user-metadata", className])}>
+      <div className="user-metadata__container" onClick={toggleWearables}>
+        <div className="user-metadata__wrapper">
           <Avatar
             size="medium"
             key={user.userAddress}
@@ -56,14 +54,25 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
             showWearables ? "wearable-metadata__wearable--show" : "",
           ])}
         >
-          <h1 className="wearable-title">{l("component.metadata.wearable")}</h1>
-          {user.wearablesContentEntity.map((wearable, key) => (
-            <WearableMetadata
-              key={key}
-              wearableUrn={wearable.pointers[0]}
-              wearableContentEntity={wearable}
-            />
-          ))}
+          {user.wearablesContentEntity.length > 0 && (
+            <h1 className="wearable-title">
+              {l("component.metadata.wearable")}
+            </h1>
+          )}
+          {user.wearablesContentEntity.length > 0 &&
+            user.wearablesContentEntity.map((wearable, key) => (
+              <WearableMetadata
+                key={key}
+                wearableUrn={wearable.pointers[0]}
+                wearableContentEntity={wearable}
+              />
+            ))}
+          {user.wearablesContentEntity.length === 0 && (
+            <div className="no-wearables">
+              <img src={NoWearable} />
+              <p>This person doesn't have any equipped collectibles yet.</p>
+            </div>
+          )}
         </div>
       )}
     </div>

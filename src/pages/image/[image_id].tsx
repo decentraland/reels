@@ -45,8 +45,13 @@ export default function ImagePage({
       <div>
         {!photoState.loading && (
           <>
-            <ImageViewer image={photo!} />
-            {photo!.metadata && <Metadata metadata={photo!.metadata} />}
+            <ImageViewer image={photo!} loading={photoState.loading} />
+            {photo!.metadata && (
+              <Metadata
+                metadata={photo!.metadata}
+                loading={photoState.loading}
+              />
+            )}
           </>
         )}
       </div>
