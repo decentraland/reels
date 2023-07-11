@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from "react"
 
 import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
+import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 
 import downloadIcon from "../../images/download-icon.svg"
@@ -10,7 +11,6 @@ import linkIcon from "../../images/link-icon.svg"
 import twitterIcon from "../../images/twitter-icon.svg"
 import locations from "../../modules/locations"
 import { SegmentImage } from "../../modules/segment"
-import handleShare from "../../modules/share"
 import { ImageViewerProps } from "../ImageViewer/ImageViewer"
 
 import "./ImageActions.css"
@@ -36,15 +36,6 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
         })
       ),
     [image]
-  )
-
-  const handleTwitterShare = useCallback(
-    (e) => {
-      e.preventDefault()
-      track(SegmentImage.Share, { image, social: "twitter" })
-      handleShare(e, twitterLink)
-    },
-    [image, twitterLink, track]
   )
 
   const handleCopyLink = useCallback(
@@ -91,7 +82,9 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
 
   return (
     <div className={TokenList.join(["image-actions", className])}>
-      <img src={twitterIcon} alt="Twitter" onClick={handleTwitterShare} />
+      <Link href={twitterLink} target="_blank" rel="noopener noreferrer">
+        <img src={twitterIcon} alt="Twitter" />
+      </Link>
       <div
         className={TokenList.join(["link-copy", isBadgeVisible && "copied"])}
       >
