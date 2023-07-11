@@ -31,6 +31,7 @@
   width: 100%;
   height: 100px;
   position: absolute;
+  top: 0;
 }
 
 .image-viewer__container .image-actions {

@@ -80,3 +80,40 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  .metadata__container {
+    position: relative;
+  }
+
+  .image-viewer__container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    -webkit-transition: height 0.35s;
+    -moz-transition: height 0.35s;
+    -ms-transition: height 0.35s;
+    -o-transition: height 0.35s;
+    transition: height 0.35s;
+  }
+
+  .image-viewer__container.show-metadata {
+    width: 100vw;
+    height: calc(100vw * 0.8);
+  }
+
+  .image-viewer__container + .metadata__container {
+    position: relative;
+    width: 100vw;
+    -webkit-transition: height 0.35s;
+    -moz-transition: height 0.35s;
+    -ms-transition: height 0.35s;
+    -o-transition: height 0.35s;
+    transition: height 0.35s;
+    overflow: hidden;
+  }
+
+  .image-viewer__container:not(.show-metadata) + .metadata__container {
+    height: 0;
+  }
+}
