@@ -3,7 +3,7 @@
     "image_actions": {
       "image_share": "This is my image",
       "uri": {
-        "twitter": "https://twitter.com/intent/tweet?text={description} {url}"
+        "twitter": "https://twitter.com/intent/tweet?text={description} https://reels.decentraland.org{url}"
       }
     },
     "metadata": {

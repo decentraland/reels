@@ -31,7 +31,7 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
     () =>
       encodeURI(
         l("component.image_actions.uri.twitter", {
-          url: window.location.href,
+          url: locations.image(image.id),
           description: l("component.image_actions.image_share"),
         })
       ),
