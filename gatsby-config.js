@@ -28,8 +28,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Decentraland Places`,
-        short_name: `Places`,
+        name: `Decentraland Reels`,
+        short_name: `Reels`,
         start_url: `/`,
         background_color: `#ff2d55`,
         theme_color: `#ff2d55`,

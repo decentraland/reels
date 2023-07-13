@@ -1,0 +1,23 @@
+.wearable-metadata__container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.wearable-metadata__container .wearable-metadata__image-container {
+  width: 93px;
+  height: 93px;
+  border-radius: 10px;
+  background: #d9d9d9;
+}
+.wearable-metadata__container .wearable-metadata__image-container img {
+  width: 93px;
+  height: 93px;
+}
+
+.wearable-metadata__container span {
+  color: #fcfcfc;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 32px;
+}

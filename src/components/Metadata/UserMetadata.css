@@ -1,0 +1,88 @@
+.user-metadata__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 86px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-top: 1px solid #716b7c;
+  color: #fcfcfc;
+  cursor: pointer;
+}
+
+.user-metadata:first-of-type .user-metadata__container {
+  border: none !important;
+}
+
+.user-metadata__wrapper {
+  line-height: 46px;
+  height: 46px;
+}
+
+.user-metadata__wrapper span {
+  color: #fcfcfc;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.user-metadata__wearable-switcher {
+  height: 100px;
+  width: 100%;
+}
+
+.user-metadata__wearable-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 76px;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+  overflow: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+.user-metadata__wearable-container.wearable-metadata__wearable--show {
+  height: auto;
+  opacity: 1;
+}
+
+.wearable-title {
+  color: #fcfcfc;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.no-wearables {
+  width: calc(100% - 76px);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-wearables p {
+  display: flex;
+  width: 263px;
+  height: 105px;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}

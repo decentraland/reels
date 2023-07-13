@@ -1,0 +1,119 @@
+.metadata__container {
+  width: 480px;
+  height: 100vh;
+  background-color: #43404a;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.metadata__wrapper {
+  margin-top: 32px;
+  margin-left: 25px;
+  color: #fcfcfc;
+}
+
+.metadata__people-container {
+  overflow: scroll;
+}
+
+.metadata__container h1.metadata__title,
+.metadata__title-people {
+  color: #fcfcfc;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.metadata__title-people {
+  padding-bottom: 20px;
+  margin-left: 25px;
+}
+
+.metadata__container h1.metadata__title:nth-child(1) {
+  margin-bottom: 40px;
+}
+
+.metadata__date {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.metadata__place {
+  position: relative;
+  font-size: 16px;
+  display: flex;
+}
+
+.metadata__place i.icon {
+  font-size: 1.43em;
+}
+
+.metadata__place .Link--pointer {
+  color: #fcfcfc;
+}
+
+.metadata__place .Link--pointer:hover {
+  text-decoration: underline;
+}
+
+.metadata__place span {
+  line-height: 20px;
+}
+
+.metadata__place .ui.loading.loading.loading.loading.loading.loading.button,
+.metadata__place .button {
+  position: absolute;
+  right: 46px;
+  bottom: -10px;
+}
+
+.metadata__divider {
+  height: 5px;
+  background: #a09ba8;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .metadata__container {
+    position: relative;
+  }
+
+  .image-viewer__container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    -webkit-transition: height 0.35s;
+    -moz-transition: height 0.35s;
+    -ms-transition: height 0.35s;
+    -o-transition: height 0.35s;
+    transition: height 0.35s;
+  }
+
+  .image-viewer__container.show-metadata {
+    width: 100vw;
+    height: calc(100vw * 0.8);
+  }
+
+  .image-viewer__container + .metadata__container {
+    position: relative;
+    width: 100vw;
+    -webkit-transition: height 0.35s;
+    -moz-transition: height 0.35s;
+    -ms-transition: height 0.35s;
+    -o-transition: height 0.35s;
+    transition: height 0.35s;
+    overflow: hidden;
+  }
+
+  .image-viewer__container:not(.show-metadata) + .metadata__container {
+    height: 0;
+  }
+}

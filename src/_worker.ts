@@ -1,8 +1,19 @@
 import { WorkerRouter } from "@worker-tools/router"
 
-import type { RouteContext } from "@worker-tools/router"
+import {
+  RouteContextWithAssets,
+  attachOpenGraph,
+  fetchAsset,
+} from "./worker/cloudflare"
 
-const router = new WorkerRouter<RouteContext>()
+const router = new WorkerRouter<RouteContextWithAssets>()
+  .get("/image/:id", async (req, ctx) => {
+    const [asset] = await Promise.all([
+      fetchAsset("/image/[image_id]", req, ctx),
+    ])
+
+    return attachOpenGraph(asset, null)
+  })
   .get("/*", async (req, ctx) => {
     const url = new URL(req.url)
     if (url.pathname !== "/" && url.pathname.endsWith("/")) {
