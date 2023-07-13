@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from "react"
 
+import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 import { Loader } from "decentraland-ui/dist/components/Loader/Loader"
 
 import { Image } from "../../@types/image"
+import { SegmentImage } from "../../modules/segment"
 import ImageActions from "../ImageActions/ImageActions"
 
 import "./ImageViewer.css"
@@ -17,10 +19,16 @@ export type ImageViewerProps = {
 export default React.memo(function ImageViewer(props: ImageViewerProps) {
   const { image, loading, className } = props
 
+  const track = useTrackContext()
+
   const [showMetadata, setShowMetadata] = useState(false)
   const handleShowMetadata = useCallback(() => {
+    track(
+      showMetadata ? SegmentImage.HideMetadata : SegmentImage.ShowMetadata,
+      { image }
+    )
     setShowMetadata(!showMetadata)
-  }, [showMetadata, setShowMetadata])
+  }, [showMetadata, setShowMetadata, track, image])
 
   return (
     <div
