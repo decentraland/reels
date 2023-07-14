@@ -7,11 +7,19 @@ import { images } from "../__data__/images"
 const GATSBY_CONTENT_ENTITY_ACTIVE =
   process.env.GATSBY_CONTENT_ENTITY_ACTIVE ||
   "https://peer.decentraland.org/content/entities/active"
+const GATSBY_REEL_API =
+  process.env.GATSBY_REEL_API ||
+  "https://camera-reel-service.decentraland.zone/api"
 
 export default function useImageById(id: string | undefined) {
   return useAsyncMemo(
     async () => {
-      const imagesResult = images.find((image) => image.id === id)
+      const imageResponse = await fetch(
+        `${GATSBY_REEL_API}/images/${id}/metadata`
+      )
+
+      const imagesResult: Image = await imageResponse.json()
+
       if (
         imagesResult?.metadata.visiblePeople &&
         imagesResult?.metadata.visiblePeople.length
