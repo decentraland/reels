@@ -3,10 +3,10 @@
 .loading-text.loading-text__large,
 .loading-text.loading-text__full {
   background: linear-gradient(
-    110deg,
-    var(--secondary-hover) 8%,
-    var(--secondary) 18%,
-    var(--secondary-hover) 33%
+    90deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.2) 100%
   );
   background-size: 200% 100%;
   animation: 1.5s loading linear infinite;

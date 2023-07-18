@@ -21,9 +21,13 @@
 .user-metadata__wrapper {
   line-height: 46px;
   height: 46px;
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 
-.user-metadata__wrapper span {
+.user-metadata__wrapper span,
+.user-metadata__wrapper .span {
   color: #fcfcfc;
   font-size: 16px;
   font-style: normal;
@@ -31,6 +35,10 @@
   line-height: normal;
   margin-left: 10px;
   text-decoration: underline;
+}
+
+.user-metadata__wrapper .span {
+  margin-bottom: 0;
 }
 
 .user-metadata__wearable-switcher {
