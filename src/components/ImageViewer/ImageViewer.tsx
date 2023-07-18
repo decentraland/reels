@@ -21,7 +21,7 @@ export default React.memo(function ImageViewer(props: ImageViewerProps) {
 
   const track = useTrackContext()
 
-  const [showMetadata, setShowMetadata] = useState(false)
+  const [showMetadata, setShowMetadata] = useState(true)
   const handleShowMetadata = useCallback(() => {
     track(
       showMetadata ? SegmentImage.HideMetadata : SegmentImage.ShowMetadata,

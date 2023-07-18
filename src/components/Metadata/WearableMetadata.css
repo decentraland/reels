@@ -2,17 +2,25 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px;
+}
+
+.wearable-metadata__container:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .wearable-metadata__container .wearable-metadata__image-container {
-  width: 93px;
-  height: 93px;
+  width: 80px;
+  height: 80px;
   border-radius: 10px;
   background: #d9d9d9;
 }
+
 .wearable-metadata__container .wearable-metadata__image-container img {
-  width: 93px;
-  height: 93px;
+  width: 80px;
+  height: 80px;
 }
 
 .wearable-metadata__container span {

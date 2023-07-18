@@ -1,0 +1,35 @@
+.no-photo__container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #fff;
+}
+
+.no-photo__container h1,
+.no-photo__container h3 {
+  color: #fcfcfc;
+  opacity: 0.8;
+}
+
+.no-photo__container h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.no-photo__container h3 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}

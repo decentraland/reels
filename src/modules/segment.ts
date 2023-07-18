@@ -5,4 +5,5 @@ export enum SegmentImage {
   JumpIn = "Jump In",
   ShowMetadata = "Show Metadata",
   HideMetadata = "Hide Metadata",
+  ImageNotFound = "Image Not Found",
 }

@@ -1,9 +1,9 @@
 import API from "decentraland-gatsby/dist/utils/api/API"
 
-const GATSBY_BASE_URL = process.env.GATSBY_BASE_URL || "/"
+const BASE_URL = process.env.GATSBY_BASE_URL || "https://reels.decentraland.org"
 
 export default {
   image: (image: string) => {
-    return API.url(GATSBY_BASE_URL, `/image/${image}`)
+    return API.url(BASE_URL, `/${image}`)
   },
 }

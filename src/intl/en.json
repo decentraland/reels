@@ -11,9 +11,11 @@
       "place": "place",
       "people": "people",
       "wearable": "wearable",
-      "jump_in": "jump in",
-      "wearable_thumbnail_url": "https://peer.decentraland.org/lambdas/collections/contents/{wearableUrn}/thumbnail",
-      "place_url": "https://peer.decentraland.org/lambdas/collections/contents/{wearableUrn}/thumbnail"
+      "jump_in": "jump in"
+    },
+    "no_photo": {
+      "title": "Photo not found",
+      "subtitle": "Whoops! The photo you are trying to access does not exist or is no longer available."
     }
   }
 }

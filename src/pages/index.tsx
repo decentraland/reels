@@ -1,7 +1,7 @@
 import React from "react"
 
-import NotFound from "decentraland-gatsby/dist/components/Layout/NotFound"
+import NotPhoto from "../components/NotPhoto/NotPhoto"
 
 export default function IndexPage() {
-  return <NotFound />
+  return <NotPhoto />
 }
