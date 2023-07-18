@@ -3,11 +3,11 @@ import React, { useMemo } from "react"
 import { Helmet } from "react-helmet"
 
 import { RouteComponentProps } from "@gatsbyjs/reach-router"
-import NotFound from "decentraland-gatsby/dist/components/Layout/NotFound"
 
-import ImageViewer from "../../components/ImageViewer/ImageViewer"
-import Metadata from "../../components/Metadata/Metadata"
-import useImageById from "../../hooks/useImageById"
+import ImageViewer from "../components/ImageViewer/ImageViewer"
+import Metadata from "../components/Metadata/Metadata"
+import NotPhoto from "../components/NotPhoto/NotPhoto"
+import useImageById from "../hooks/useImageById"
 
 export type EventPageState = {
   updating: Record<string, boolean>
@@ -21,7 +21,7 @@ export default function ImagePage({
   const photo = useMemo(() => photoFetch, [photoFetch])
 
   if (photoState.loaded && !photoState.loading && !photo) {
-    return <NotFound />
+    return <NotPhoto />
   }
 
   return (
@@ -43,16 +43,9 @@ export default function ImagePage({
         <meta name="twitter:site" content={"twitter:site"} />
       </Helmet>
       <div>
-        {!photoState.loading && (
-          <>
-            <ImageViewer image={photo!} loading={photoState.loading} />
-            {photo!.metadata && (
-              <Metadata
-                metadata={photo!.metadata}
-                loading={photoState.loading}
-              />
-            )}
-          </>
+        <ImageViewer image={photo!} loading={photoState.loading} />
+        {photo!.metadata && (
+          <Metadata metadata={photo!.metadata} loading={photoState.loading} />
         )}
       </div>
     </>

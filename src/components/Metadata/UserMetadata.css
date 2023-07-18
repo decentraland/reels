@@ -41,7 +41,8 @@
 .user-metadata__wearable-container {
   display: flex;
   flex-direction: column;
-  margin-left: 76px;
+  margin-left: 20px;
+  margin-right: 20px;
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;

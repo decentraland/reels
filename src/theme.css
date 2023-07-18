@@ -1,3 +1,9 @@
 body {
-  background-color: #43404a;
+  background-color: #161419;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -200%;
+  }
 }

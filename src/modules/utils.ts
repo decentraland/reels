@@ -2,9 +2,7 @@ import { ApiResponseBody } from "decentraland-gatsby/dist/entities/Route/wkc/res
 
 import { Metadata } from "../@types/image"
 const DECENTRALAND_URL =
-  process.env.GATSBY_DECENTRALAND_URL ||
-  process.env.DECENTRALAND_URL ||
-  "https://play.decentraland.org"
+  process.env.GATSBY_DECENTRALAND_URL || "https://play.decentraland.org"
 
 const PLACES_URL =
   process.env.GATSBY_PLACES_URL || "https://places.decentraland.org"

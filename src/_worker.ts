@@ -7,10 +7,8 @@ import {
 } from "./worker/cloudflare"
 
 const router = new WorkerRouter<RouteContextWithAssets>()
-  .get("/image/:id", async (req, ctx) => {
-    const [asset] = await Promise.all([
-      fetchAsset("/image/[image_id]", req, ctx),
-    ])
+  .get("/:id", async (req, ctx) => {
+    const [asset] = await Promise.all([fetchAsset("/[image_id]", req, ctx)])
 
     return attachOpenGraph(asset, null)
   })

@@ -1,1 +1,8 @@
-{}
+{
+  "GATSBY_CATALYST_URL": "https://peer.decentraland.org",
+  "GATSBY_REEL_SERVICE_URL": "https://camera-reel-service.decentraland.zone",
+  "GATSBY_BASE_URL": "https://reels.decentraland.org",
+  "GATSBY_DECENTRALAND_URL": "https://play.decentraland.org",
+  "GATSBY_PLACES_URL": "https://places.decentraland.org",
+  "GATSBY_MARKETPLACE_URL": "https://market.decentraland.org"
+}
