@@ -9,16 +9,18 @@ import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic"
 import WearableMetadata from "./WearableMetadata"
 import { User } from "../../@types/image"
 import NoWearable from "../../images/wearable-shirt.svg"
+import LoadingText from "../Loading/LoadingText"
 
 import "./UserMetadata.css"
 
 export type UserMetadataProps = {
   user: User
+  loading?: boolean
   className?: string
 }
 
 export default React.memo(function UserMetadata(props: UserMetadataProps) {
-  const { user, className } = props
+  const { user, loading, className } = props
 
   const [showWearables, setShowWearables] = React.useState(false)
 
@@ -35,19 +37,23 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
             size="medium"
             key={user.userAddress}
             address={user.userAddress}
+            loading={loading}
           />{" "}
-          <span>{user.userName}</span>
+          {!loading && <span>{user.userName}</span>}
+          {loading && <LoadingText type="span" size="medium" />}
         </div>
-        <Icon
-          name={
-            TokenList.join([
-              "chevron",
-              showWearables ? "up" : "down",
-            ]) as SemanticICONS
-          }
-        />
+        {!loading && (
+          <Icon
+            name={
+              TokenList.join([
+                "chevron",
+                showWearables ? "up" : "down",
+              ]) as SemanticICONS
+            }
+          />
+        )}
       </div>
-      {user.wearablesContentEntity && (
+      {!loading && user.wearablesContentEntity && (
         <div
           className={TokenList.join([
             "user-metadata__wearable-container",
