@@ -25,5 +25,6 @@ export type Metadata = {
 export type Image = {
   id: string
   url: string
+  thumbnailUrl: string
   metadata: Metadata
 }

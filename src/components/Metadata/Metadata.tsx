@@ -44,7 +44,10 @@ export default React.memo(function Metadata(props: MetadataProps) {
         )}
         {loading && <LoadingText type="p" size="medium" />}
         <div className="metadata__date">
-          {!loading && Time(metadata.dateTime).utc().format("MMMM DD YYYY")}
+          {!loading &&
+            Time(Number(metadata.dateTime) * 1000)
+              .utc()
+              .format("MMMM DD YYYY")}
           {loading && <LoadingText type="span" size="large" />}
         </div>
         {!loading && (
