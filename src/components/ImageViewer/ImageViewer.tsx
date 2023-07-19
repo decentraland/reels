@@ -40,7 +40,9 @@ export default React.memo(function ImageViewer(props: ImageViewerProps) {
     >
       <div
         className="image-viewer__image"
-        style={{ backgroundImage: !loading ? `url(${image.url})` : "" }}
+        style={{
+          backgroundImage: !loading && image?.url ? `url(${image.url})` : "",
+        }}
       >
         {loading && <Loader size="big" active />}
       </div>

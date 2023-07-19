@@ -32,18 +32,6 @@ export default function ImagePage({
             : l("component.no_photo.title")}
         </title>
         <meta name="description" content={"image description"} />
-
-        <meta property="og:title" content={"og:title"} />
-        <meta property="og:description" content={"og:description"} />
-        <meta property="og:image" content={photo?.url} />
-        <meta property="og:site" content={"og:site"} />
-
-        <meta name="twitter:title" content={"twitter:title"} />
-        <meta name="twitter:description" content={"twitter:description"} />
-        <meta name="twitter:image" content={photo?.url} />
-        <meta name="twitter:card" content={"summary_large_image"} />
-        <meta name="twitter:creator" content={"twitter:creator"} />
-        <meta name="twitter:site" content={"twitter:site"} />
       </Helmet>
       <div>
         <ImageViewer image={photo!} loading={photoState.loading} />

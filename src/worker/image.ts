@@ -21,7 +21,10 @@ export async function getImageOpenGraph(imageId: string) {
       description: `${
         summaryPeople === 0 ? "no one" : `${summaryPeople} avatars`
       } in the image`,
-      image: imagesResult.url,
+    }
+
+    if (imagesResult.url) {
+      imageEntry.image = imagesResult.url
     }
 
     return imageEntry
