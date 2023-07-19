@@ -35,9 +35,7 @@ export default function ImagePage({
       </Helmet>
       <div>
         <ImageViewer image={photo!} loading={photoState.loading} />
-        {photo!.metadata && (
-          <Metadata metadata={photo!.metadata} loading={photoState.loading} />
-        )}
+        <Metadata metadata={photo!.metadata} loading={photoState.loading} />
       </div>
     </>
   )
