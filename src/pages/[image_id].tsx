@@ -27,9 +27,9 @@ export default function ImagePage({
     <>
       <Helmet>
         <title>
-          {!photo
-            ? l("component.no_photo.title")
-            : `${photo.metadata.userName} took this photo in ${photo.metadata.scene.name}`}
+          {photo?.metadata
+            ? `${photo.metadata.userName} took this photo in ${photo.metadata.scene.name}`
+            : l("component.no_photo.title")}
         </title>
         <meta name="description" content={"image description"} />
 
