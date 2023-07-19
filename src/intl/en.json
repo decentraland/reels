@@ -3,7 +3,7 @@
     "image_actions": {
       "image_share": "This is my image",
       "uri": {
-        "twitter": "https://twitter.com/intent/tweet?text={description} https://reels.decentraland.org{url}"
+        "twitter": "https://twitter.com/intent/tweet?text={description} {url}"
       }
     },
     "metadata": {
@@ -11,7 +11,8 @@
       "place": "place",
       "people": "people",
       "wearable": "wearable",
-      "jump_in": "jump in"
+      "jump_in": "jump in",
+      "no_wearable": "This person doesn't have any equipped collectibles yet."
     },
     "no_photo": {
       "title": "Photo not found",
