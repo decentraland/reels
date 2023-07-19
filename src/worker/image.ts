@@ -1,9 +1,7 @@
 import { OpenGraphWriterOptions } from "./writer"
 import { Image } from "../@types/image"
 
-const REEL_SERVICE_URL =
-  process.env.GATSBY_REEL_SERVICE_URL ||
-  "https://camera-reel-service.decentraland.zone"
+const REEL_SERVICE_URL = "https://camera-reel-service.decentraland.zone"
 
 export async function getImageOpenGraph(imageId: string) {
   try {
