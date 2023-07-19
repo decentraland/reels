@@ -3,15 +3,12 @@ import React, { useMemo } from "react"
 import { Helmet } from "react-helmet"
 
 import { RouteComponentProps } from "@gatsbyjs/reach-router"
+import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 
 import ImageViewer from "../components/ImageViewer/ImageViewer"
 import Metadata from "../components/Metadata/Metadata"
 import NotPhoto from "../components/NotPhoto/NotPhoto"
 import useImageById from "../hooks/useImageById"
-
-export type EventPageState = {
-  updating: Record<string, boolean>
-}
 
 export default function ImagePage({
   image_id,
@@ -20,6 +17,8 @@ export default function ImagePage({
 
   const photo = useMemo(() => photoFetch, [photoFetch])
 
+  const l = useFormatMessage()
+
   if (photoState.loaded && !photoState.loading && !photo) {
     return <NotPhoto />
   }
@@ -27,7 +26,11 @@ export default function ImagePage({
   return (
     <>
       <Helmet>
-        <title>Image title</title>
+        <title>
+          {!photo
+            ? l("component.no_photo.title")
+            : `${photo.metadata.userName} took this photo in ${photo.metadata.scene.name}`}
+        </title>
         <meta name="description" content={"image description"} />
 
         <meta property="og:title" content={"og:title"} />

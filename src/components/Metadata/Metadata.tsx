@@ -6,7 +6,6 @@ import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import Time from "decentraland-gatsby/dist/utils/date/Time"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 import { Button } from "decentraland-ui/dist/components/Button/Button"
-import { arrayOf } from "prop-types"
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon"
 
 import UserMetadata from "./UserMetadata"

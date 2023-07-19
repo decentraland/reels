@@ -76,7 +76,7 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
           {user.wearablesContentEntity.length === 0 && (
             <div className="no-wearables">
               <img src={NoWearable} />
-              <p>This person doesn't have any equipped collectibles yet.</p>
+              <p>{l("component.metadata.no_wearable")}</p>
             </div>
           )}
         </div>

@@ -5,12 +5,16 @@ import {
   attachOpenGraph,
   fetchAsset,
 } from "./worker/cloudflare"
+import { getImageOpenGraph } from "./worker/image"
 
 const router = new WorkerRouter<RouteContextWithAssets>()
   .get("/:id", async (req, ctx) => {
-    const [asset] = await Promise.all([fetchAsset("/[image_id]", req, ctx)])
+    const [asset, openGraph] = await Promise.all([
+      fetchAsset("/[image_id]", req, ctx),
+      getImageOpenGraph(ctx.match.pathname.groups.id!),
+    ])
 
-    return attachOpenGraph(asset, null)
+    return attachOpenGraph(asset, openGraph)
   })
   .get("/*", async (req, ctx) => {
     const url = new URL(req.url)
