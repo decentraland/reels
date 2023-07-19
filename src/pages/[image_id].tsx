@@ -19,7 +19,8 @@ export default function ImagePage({
 
   const l = useFormatMessage()
 
-  if (photoState.loaded && !photoState.loading && !photo) {
+  const loading = !photoState.loaded || photoState.loading
+  if (!loading && !photo) {
     return <NotPhoto />
   }
 
@@ -34,8 +35,8 @@ export default function ImagePage({
         <meta name="description" content={"image description"} />
       </Helmet>
       <div>
-        <ImageViewer image={photo!} loading={photoState.loading} />
-        <Metadata metadata={photo!.metadata} loading={photoState.loading} />
+        <ImageViewer image={photo!} loading={loading} />
+        <Metadata metadata={photo!.metadata} loading={loading} />
       </div>
     </>
   )
