@@ -21,13 +21,18 @@ export default function useImageById(id: string | undefined) {
         const imagesResult: Image = await imageResponse.json()
 
         if (
-          imagesResult?.metadata.visiblePeople &&
-          imagesResult?.metadata.visiblePeople.length
+          !imagesResult ||
+          !imagesResult.metadata.visiblePeople ||
+          imagesResult?.metadata.visiblePeople.length === 0
         ) {
-          const urns = imagesResult.metadata.visiblePeople
-            .map((user) => user.wearables)
-            .flat()
+          return imagesResult
+        }
 
+        const urns = imagesResult.metadata.visiblePeople
+          .map((user) => user.wearables)
+          .flat()
+
+        if (urns.length > 0) {
           const response = await fetch(
             `${CATALYST_URL}/content/entities/active`,
             {
@@ -55,6 +60,10 @@ export default function useImageById(id: string | undefined) {
             user.wearablesContentEntity = user.wearables
               .map((wearable) => wearablesByUrn[wearable] || null)
               .filter((wearable) => wearable !== null)
+          })
+        } else {
+          imagesResult.metadata.visiblePeople.forEach((user) => {
+            user.wearablesContentEntity = []
           })
         }
         return imagesResult
