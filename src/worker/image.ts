@@ -15,12 +15,10 @@ export async function getImageOpenGraph(imageId: string) {
       return null
     }
 
-    const summaryPeople = imagesResult.metadata.visiblePeople.length
     const imageEntry: OpenGraphWriterOptions = {
-      title: `${imagesResult.metadata.userName} took this photo in ${imagesResult.metadata.scene.name}`,
-      description: `${
-        summaryPeople === 0 ? "no one" : `${summaryPeople} avatars`
-      } in the image`,
+      title: `Picture taken by ${imagesResult.metadata.userName}`,
+      description:
+        "ake a look at this interactive photo, jump to the spot, gossip who was there and what they were wearing! Are you going to miss it?",
     }
 
     if (imagesResult.url) {
