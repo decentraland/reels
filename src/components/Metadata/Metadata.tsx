@@ -45,6 +45,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
         {loading && <LoadingText type="p" size="medium" />}
         <div className="metadata__date">
           {!loading &&
+            metadata?.dateTime &&
             Time(Number(metadata.dateTime) * 1000)
               .utc()
               .format("MMMM DD YYYY")}
@@ -54,7 +55,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
           <h1 className="metadata__title">{l("component.metadata.place")}</h1>
         )}
         {loading && <LoadingText type="p" size="small" />}
-        {!loading && (
+        {!loading && metadata && (
           <div className="metadata__place">
             <Icon name="map marker alternate" />{" "}
             {placeUrl && (
@@ -75,7 +76,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
               href={jumpInUrl}
               target="_blank"
               data-event={SegmentImage.JumpIn}
-              data-scene={`${metadata.scene.location.x},${metadata.scene.location.y}`}
+              data-scene={`${metadata.scene.location.x},${metadata?.scene.location.y}`}
               loading={loading}
             >
               {l("component.metadata.jump_in")}
@@ -86,7 +87,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
       </div>
 
       <div className="metadata__divider" />
-      {!loading && metadata.visiblePeople.length > 0 && (
+      {!loading && metadata?.visiblePeople.length > 0 && (
         <div className="metadata__people-container">
           <h1 className="metadata__title-people">
             {l("component.metadata.people")}

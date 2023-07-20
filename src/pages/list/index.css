@@ -1,0 +1,31 @@
+.images-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  padding: 50px;
+}
+
+.images-title {
+  color: aliceblue;
+}
+
+.images-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.images-item {
+  width: 200px;
+  height: 112.5px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.images-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
