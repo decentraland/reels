@@ -16,6 +16,11 @@ const router = new WorkerRouter<RouteContextWithAssets>()
 
     return attachOpenGraph(asset, openGraph)
   })
+  .get("list/:address", async (req, ctx) => {
+    const [asset] = await Promise.all([fetchAsset("/list/[address]", req, ctx)])
+
+    return attachOpenGraph(asset, null)
+  })
   .get("/*", async (req, ctx) => {
     const url = new URL(req.url)
     if (url.pathname !== "/" && url.pathname.endsWith("/")) {

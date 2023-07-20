@@ -2,28 +2,21 @@ import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
 import { ContentEntityWearable } from "decentraland-gatsby/dist/utils/api/Catalyst.types"
 
 import { Image } from "../@types/image"
+import ReelService from "../api/ReelService"
 
 const CATALYST_URL =
   process.env.GATSBY_CATALYST_URL || "https://peer.decentraland.org"
-
-const REEL_SERVICE_URL =
-  process.env.GATSBY_REEL_SERVICE_URL ||
-  "https://camera-reel-service.decentraland.zone"
 
 export default function useImageById(id: string | undefined) {
   return useAsyncMemo(
     async () => {
       try {
-        const imageResponse = await fetch(
-          `${REEL_SERVICE_URL}/api/images/${id}/metadata`
-        )
-
-        const imagesResult: Image = await imageResponse.json()
+        const imagesResult = await ReelService.get().getImageById(id!)
 
         if (
           !imagesResult ||
           !imagesResult.metadata.visiblePeople ||
-          imagesResult?.metadata.visiblePeople.length === 0
+          imagesResult.metadata.visiblePeople.length === 0
         ) {
           return imagesResult
         }

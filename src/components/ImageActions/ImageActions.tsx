@@ -67,7 +67,7 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
 
       const anchorElement = document.createElement("a")
       anchorElement.href = href
-      anchorElement.download = "image.jpg"
+      anchorElement.download = `${image.metadata.userName}-${image.metadata.dateTime}.jpg`
 
       document.body.appendChild(anchorElement)
       anchorElement.click()
