@@ -1,7 +1,7 @@
 {
   "component": {
     "image_actions": {
-      "image_share": "Hey, check out this photo I took in Decentraland! #dclcamera",
+      "image_share": "Hey, check out this photo I took in Decentraland%21%20%23dclcamera%20",
       "uri": {
         "twitter": "https://twitter.com/intent/tweet?text={description} {url}"
       }
