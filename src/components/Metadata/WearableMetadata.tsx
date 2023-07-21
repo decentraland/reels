@@ -25,8 +25,8 @@ export default React.memo(function WearableMetadata(
 
   const [marketplaceUrl, thumbnailUrl] = useMemo(() => {
     const urnSplitted = wearableUrn.split(":")
-    const wearableContract = urnSplitted[urnSplitted.length - 2]
-    const wearableItem = urnSplitted[urnSplitted.length - 1]
+    const wearableContract = urnSplitted[4]
+    const wearableItem = urnSplitted[5]
     return [
       `${MARKETPLACE_URL}/contracts/${wearableContract}/items/${wearableItem}`,
       `${GATSBY_CATALYST_URL}/lambdas/collections/contents/${wearableUrn}/thumbnail`,

@@ -4,5 +4,6 @@
   "GATSBY_BASE_URL": "https://reels.decentraland.org",
   "GATSBY_DECENTRALAND_URL": "https://play.decentraland.org",
   "GATSBY_PLACES_URL": "https://places.decentraland.org",
-  "GATSBY_MARKETPLACE_URL": "https://market.decentraland.org"
+  "GATSBY_MARKETPLACE_URL": "https://market.decentraland.org",
+  "GATSBY_PROFILE_URL": "https://profile.decentraland.zone"
 }

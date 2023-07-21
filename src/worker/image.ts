@@ -18,7 +18,7 @@ export async function getImageOpenGraph(imageId: string) {
     const imageEntry: OpenGraphWriterOptions = {
       title: `Picture taken by ${imagesResult.metadata.userName}`,
       description:
-        "ake a look at this interactive photo, jump to the spot, gossip who was there and what they were wearing! Are you going to miss it?",
+        "Take a look at this interactive photo, jump to the spot, gossip who was there and what they were wearing! Are you going to miss it?",
     }
 
     if (imagesResult.url) {

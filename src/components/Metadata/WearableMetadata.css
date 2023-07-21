@@ -3,12 +3,17 @@
   align-items: center;
   margin-bottom: 10px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   padding: 6px;
+  -webkit-transition: background 0.35s;
+  -moz-transition: background 0.35s;
+  -ms-transition: background 0.35s;
+  -o-transition: background 0.35s;
+  transition: background 0.35s;
 }
 
 .wearable-metadata__container:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: #716b7c;
 }
 
 .wearable-metadata__container .wearable-metadata__image-container {

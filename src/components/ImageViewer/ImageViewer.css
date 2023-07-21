@@ -12,7 +12,7 @@
 }
 
 .image-viewer__container.show-metadata {
-  width: calc(100vw - 480px);
+  width: calc(100vw - 571px);
 }
 
 .image-viewer__image {

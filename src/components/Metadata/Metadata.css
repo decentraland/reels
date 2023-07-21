@@ -1,5 +1,5 @@
 .metadata__container {
-  width: 480px;
+  width: 571px;
   height: 100vh;
   background-color: #43404a;
   position: absolute;
@@ -12,12 +12,12 @@
 
 .metadata__wrapper {
   margin-top: 32px;
-  margin-left: 25px;
+  margin-left: 16px;
   color: #fcfcfc;
 }
 
 .metadata__people-container {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -28,12 +28,16 @@
   font-weight: 600;
   text-transform: uppercase;
   margin-top: 0;
+  margin-bottom: 7.5px;
+}
+
+.metadata__user {
   margin-bottom: 20px;
 }
 
 .metadata__title-people {
   padding-bottom: 20px;
-  margin-left: 25px;
+  margin-left: 16px;
 }
 
 .metadata__container h1.metadata__title:nth-child(1) {
@@ -49,6 +53,8 @@
   position: relative;
   font-size: 16px;
   display: flex;
+  height: 34px;
+  align-items: center;
 }
 
 .metadata__place i.icon {
@@ -70,8 +76,11 @@
 .metadata__place .ui.loading.loading.loading.loading.loading.loading.button,
 .metadata__place .button {
   position: absolute;
-  right: 46px;
-  bottom: -10px;
+  right: 61.5px;
+}
+
+.metadata__place .button {
+  padding: 8px 16.5px;
 }
 
 .metadata__divider {
