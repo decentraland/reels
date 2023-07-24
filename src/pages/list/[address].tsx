@@ -36,15 +36,16 @@ export default function ListPage({
       </Helmet>
 
       <div className="images-container">
-        {photoFetch.length > 0 && (
+        {photoFetch?.images?.length > 0 && (
           <h1 className="images-title">
-            User: {photoFetch[0].metadata.userName}
+            User: {photoFetch.images[0].metadata.userName}
           </h1>
         )}
-        {photoState.loaded && photoFetch.length === 0 && <NotPhoto />}
+        {photoState.loaded &&
+          (!photoFetch || photoFetch?.images?.length === 0) && <NotPhoto />}
         <div className="images-wrapper">
-          {photoFetch.length > 0 &&
-            photoFetch.map((image) => (
+          {photoFetch?.images?.length > 0 &&
+            photoFetch.images.map((image) => (
               <div
                 key={image.id}
                 onClick={() => navigate(locations.image(image.id))}

@@ -5,6 +5,11 @@ import env from "decentraland-gatsby/dist/utils/env"
 import { Image } from "../@types/image"
 import { FetchListOptions } from "../hooks/useImagesByUser"
 
+export type FetchListResult = {
+  images: Image[]
+  current_images: number
+  max_images: number
+}
 export default class ReelService extends API {
   static Url = env(
     `REEL_SERVICE_URL`,
@@ -57,7 +62,7 @@ export default class ReelService extends API {
     options?: Partial<FetchListOptions>
   ) {
     const query = options ? API.searchParams(options).toString() : ""
-    const result = await super.fetch<Image[]>(
+    const result = await super.fetch<FetchListResult>(
       `/api/users/${address}/images?${query}`,
       this.options()
     )

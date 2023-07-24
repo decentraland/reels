@@ -35,6 +35,15 @@
   margin-bottom: 20px;
 }
 
+.metadata__user .metadata__user-name {
+  color: #fcfcfc;
+  text-decoration: none;
+}
+
+.metadata__user .metadata__user-name:hover {
+  text-decoration: underline;
+}
+
 .metadata__title-people {
   padding-bottom: 20px;
   margin-left: 16px;

@@ -1,7 +1,6 @@
 import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
 
-import { Image } from "../@types/image"
-import ReelService from "../api/ReelService"
+import ReelService, { FetchListResult } from "../api/ReelService"
 
 export type FetchListOptions = {
   offset: number
@@ -18,10 +17,10 @@ export default function useImagesByUser(
         return ReelService.get().getImagesByWallet(address!, options)
       } catch (error) {
         console.log(error)
-        return [] as Image[]
+        return {} as FetchListResult
       }
     },
     [address],
-    { callWithTruthyDeps: true, initialValue: [] as Image[] }
+    { callWithTruthyDeps: true, initialValue: {} as FetchListResult }
   )
 }

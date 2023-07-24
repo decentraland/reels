@@ -11,8 +11,11 @@
   margin-right: auto;
   border-top: 1px solid #716b7c;
   color: #fcfcfc;
-  cursor: pointer;
   width: 495px;
+}
+
+.user-metadata__container i {
+  cursor: pointer;
 }
 
 .user-metadata:first-of-type .user-metadata__container {
@@ -28,13 +31,18 @@
 }
 
 .user-metadata__wrapper span,
-.user-metadata__wrapper .span {
+.user-metadata__wrapper .span,
+.user-metadata__wrapper .user-metadata__user-name {
   color: #fcfcfc;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin-left: 10px;
+  text-decoration: none;
+}
+
+.user-metadata__wrapper .user-metadata__user-name:hover {
   text-decoration: underline;
 }
 
