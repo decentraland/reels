@@ -12,7 +12,8 @@
       "people": "people",
       "wearable": "wearable",
       "jump_in": "jump in",
-      "no_wearable": "This person doesn't have any equipped collectibles yet."
+      "no_wearable": "This person doesn't have any equipped collectibles yet.",
+      "photo_taken_by": "Photo taken by"
     },
     "no_photo": {
       "title": "Photo not found",

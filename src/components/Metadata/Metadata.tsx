@@ -1,5 +1,7 @@
 import React, { useMemo } from "react"
 
+import Avatar from "decentraland-gatsby/dist/components/Profile/Avatar"
+import useFeatureFlagContext from "decentraland-gatsby/dist/context/FeatureFlag/useFeatureFlagContext"
 import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
@@ -10,6 +12,7 @@ import Icon from "semantic-ui-react/dist/commonjs/elements/Icon"
 
 import UserMetadata from "./UserMetadata"
 import { Metadata, User } from "../../@types/image"
+import { FeatureFlags } from "../../modules/ff"
 import { SegmentImage } from "../../modules/segment"
 import { getExplorerUrl, getPlacesUrl } from "../../modules/utils"
 import LoadingText from "../Loading/LoadingText"
@@ -22,6 +25,9 @@ export type MetadataProps = {
   className?: string
 }
 
+const PROFILE_URL =
+  process.env.GATSBY_PROFILE_URL || "https://profile.decentraland.zone"
+
 export default React.memo(function Metadata(props: MetadataProps) {
   const { metadata, loading, className } = props
   const l = useFormatMessage()
@@ -33,6 +39,16 @@ export default React.memo(function Metadata(props: MetadataProps) {
       callWithTruthyDeps: true,
     }
   )
+
+  const profileUrl = useMemo(
+    () =>
+      metadata?.userAddress ? `${PROFILE_URL}/${metadata.userAddress}` : "",
+    [metadata]
+  )
+
+  const [ff] = useFeatureFlagContext()
+  console.log(ff)
+  console.log(profileUrl)
 
   const jumpInUrl = useMemo(() => getExplorerUrl(metadata), [metadata])
 
@@ -50,6 +66,24 @@ export default React.memo(function Metadata(props: MetadataProps) {
               .utc()
               .format("MMMM DD YYYY")}
           {loading && <LoadingText type="span" size="large" />}
+        </div>
+        <div className="metadata__user">
+          <Avatar
+            size="medium"
+            key={metadata?.userAddress}
+            address={metadata?.userAddress}
+            loading={loading}
+          />{" "}
+          {!loading && (
+            <span>
+              {l("component.metadata.photo_taken_by")}{" "}
+              {!ff.flags[FeatureFlags.HideUserProfileLink] && (
+                <Link href={profileUrl}>{metadata?.userName}</Link>
+              )}
+              {ff.flags[FeatureFlags.HideUserProfileLink] && metadata?.userName}
+            </span>
+          )}
+          {loading && <LoadingText type="span" size="medium" />}
         </div>
         {!loading && (
           <h1 className="metadata__title">{l("component.metadata.place")}</h1>

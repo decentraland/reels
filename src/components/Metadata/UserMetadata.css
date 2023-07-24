@@ -3,15 +3,16 @@
   justify-content: space-between;
   align-items: center;
   height: 86px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 16px;
+  margin-right: auto;
   border-top: 1px solid #716b7c;
   color: #fcfcfc;
   cursor: pointer;
+  width: 495px;
 }
 
 .user-metadata:first-of-type .user-metadata__container {
@@ -50,7 +51,9 @@
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 495px;
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;
@@ -76,22 +79,25 @@
 }
 
 .no-wearables {
-  width: calc(100% - 76px);
-  height: 350px;
+  width: 288px;
+  height: 101px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin: auto;
+}
+
+.no-wearables img {
+  width: 24px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
 .no-wearables p {
-  display: flex;
-  width: 263px;
-  height: 105px;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
+  color: #cfcdd4;
   text-align: center;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
+  margin-top: 12px;
 }

@@ -3,6 +3,7 @@ import { ContentEntityWearable } from "decentraland-gatsby/dist/utils/api/Cataly
 export type User = {
   userName: string
   userAddress: string
+  isGuest: boolean
   wearables: string[]
   wearablesContentEntity?: ContentEntityWearable[]
 }
