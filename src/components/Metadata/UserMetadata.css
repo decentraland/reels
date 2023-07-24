@@ -11,8 +11,11 @@
   margin-right: auto;
   border-top: 1px solid #716b7c;
   color: #fcfcfc;
-  cursor: pointer;
   width: 495px;
+}
+
+.user-metadata__container i {
+  cursor: pointer;
 }
 
 .user-metadata:first-of-type .user-metadata__container {
@@ -28,13 +31,18 @@
 }
 
 .user-metadata__wrapper span,
-.user-metadata__wrapper .span {
+.user-metadata__wrapper .span,
+.user-metadata__wrapper .user-metadata__user-name {
   color: #fcfcfc;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin-left: 10px;
+  text-decoration: none;
+}
+
+.user-metadata__wrapper .user-metadata__user-name:hover {
   text-decoration: underline;
 }
 
@@ -100,4 +108,22 @@
   font-size: 16px;
   font-weight: 400;
   margin-top: 12px;
+}
+
+@media only screen and (max-width: 991px) {
+  .user-metadata__container,
+  .user-metadata__wearable-container {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .user-metadata__container,
+  .user-metadata__wearable-container {
+    width: calc(100% - 42px);
+    margin-left: 16px;
+    margin-right: 26px;
+  }
 }

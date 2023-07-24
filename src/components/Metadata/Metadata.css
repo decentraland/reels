@@ -35,6 +35,15 @@
   margin-bottom: 20px;
 }
 
+.metadata__user .metadata__user-name {
+  color: #fcfcfc;
+  text-decoration: none;
+}
+
+.metadata__user .metadata__user-name:hover {
+  text-decoration: underline;
+}
+
 .metadata__title-people {
   padding-bottom: 20px;
   margin-left: 16px;
@@ -91,7 +100,12 @@
   border-bottom: 1px solid #a09ba8;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 991px) {
+  .metadata__wrapper {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
   .metadata__container {
     position: relative;
   }
@@ -125,5 +139,12 @@
 
   .image-viewer__container:not(.show-metadata) + .metadata__container {
     height: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .metadata__wrapper {
+    margin-left: 16px;
+    margin-right: 26px;
   }
 }

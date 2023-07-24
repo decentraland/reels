@@ -25,8 +25,8 @@ export type MetadataProps = {
   className?: string
 }
 
-const PROFILE_URL =
-  process.env.GATSBY_PROFILE_URL || "https://profile.decentraland.zone"
+const USER_PROFILE_URL =
+  process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.zone"
 
 export default React.memo(function Metadata(props: MetadataProps) {
   const { metadata, loading, className } = props
@@ -42,13 +42,13 @@ export default React.memo(function Metadata(props: MetadataProps) {
 
   const profileUrl = useMemo(
     () =>
-      metadata?.userAddress ? `${PROFILE_URL}/${metadata.userAddress}` : "",
+      metadata?.userAddress
+        ? `${USER_PROFILE_URL}/${metadata.userAddress}`
+        : "",
     [metadata]
   )
 
   const [ff] = useFeatureFlagContext()
-  console.log(ff)
-  console.log(profileUrl)
 
   const jumpInUrl = useMemo(() => getExplorerUrl(metadata), [metadata])
 
@@ -78,7 +78,9 @@ export default React.memo(function Metadata(props: MetadataProps) {
             <span>
               {l("component.metadata.photo_taken_by")}{" "}
               {!ff.flags[FeatureFlags.HideUserProfileLink] && (
-                <Link href={profileUrl}>{metadata?.userName}</Link>
+                <Link className="metadata__user-name" href={profileUrl}>
+                  {metadata?.userName}
+                </Link>
               )}
               {ff.flags[FeatureFlags.HideUserProfileLink] && metadata?.userName}
             </span>

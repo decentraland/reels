@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useMemo } from "react"
 
 import Avatar from "decentraland-gatsby/dist/components/Profile/Avatar"
+import useFeatureFlagContext from "decentraland-gatsby/dist/context/FeatureFlag/useFeatureFlagContext"
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
+import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon"
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic"
@@ -9,6 +11,7 @@ import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic"
 import WearableMetadata from "./WearableMetadata"
 import { User } from "../../@types/image"
 import NoWearable from "../../images/wearable-shirt.svg"
+import { FeatureFlags } from "../../modules/ff"
 import LoadingText from "../Loading/LoadingText"
 
 import "./UserMetadata.css"
@@ -19,6 +22,9 @@ export type UserMetadataProps = {
   className?: string
 }
 
+const USER_PROFILE_URL =
+  process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.zone"
+
 export default React.memo(function UserMetadata(props: UserMetadataProps) {
   const { user, loading, className } = props
 
@@ -28,10 +34,17 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
     setShowWearables(!showWearables)
   }, [showWearables])
 
+  const [ff] = useFeatureFlagContext()
+
+  const profileUrl = useMemo(
+    () => (user?.userAddress ? `${USER_PROFILE_URL}/${user.userAddress}` : ""),
+    [user]
+  )
+
   const l = useFormatMessage()
   return (
     <div className={TokenList.join(["user-metadata", className])}>
-      <div className="user-metadata__container" onClick={toggleWearables}>
+      <div className="user-metadata__container">
         <div className="user-metadata__wrapper">
           <Avatar
             size="medium"
@@ -39,7 +52,14 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
             address={user.userAddress}
             loading={loading}
           />{" "}
-          {!loading && <span>{user.userName}</span>}
+          {!ff.flags[FeatureFlags.HideUserProfileLink] && !loading && (
+            <Link className="user-metadata__user-name" href={profileUrl}>
+              {user.userName}
+            </Link>
+          )}
+          {ff.flags[FeatureFlags.HideUserProfileLink] && !loading && (
+            <span>{user.userName}</span>
+          )}
           {loading && <LoadingText type="span" size="medium" />}
         </div>
         {!loading && (
@@ -50,6 +70,7 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
                 showWearables ? "up" : "down",
               ]) as SemanticICONS
             }
+            onClick={toggleWearables}
           />
         )}
       </div>
