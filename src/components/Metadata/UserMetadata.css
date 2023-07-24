@@ -101,3 +101,21 @@
   font-weight: 400;
   margin-top: 12px;
 }
+
+@media only screen and (max-width: 991px) {
+  .user-metadata__container,
+  .user-metadata__wearable-container {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .user-metadata__container,
+  .user-metadata__wearable-container {
+    width: calc(100% - 42px);
+    margin-left: 16px;
+    margin-right: 26px;
+  }
+}
