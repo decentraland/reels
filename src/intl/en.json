@@ -1,9 +1,9 @@
 {
   "component": {
     "image_actions": {
-      "image_share": "Hey, check out this photo I took in Decentraland!",
+      "image_share": "Check out what I'm doing in Decentraland right now and join me!",
       "uri": {
-        "twitter": "https://twitter.com/intent/tweet?text={description}&hashtags=dclcamera&url={url}"
+        "twitter": "https://twitter.com/intent/tweet?text={description}&hashtags=DCLCamera&url={url}"
       }
     },
     "metadata": {
@@ -13,7 +13,8 @@
       "wearable": "collectible wearables",
       "jump_in": "jump in",
       "no_wearable": "This person doesn't have any equipped collectibles yet.",
-      "photo_taken_by": "Photo taken by"
+      "photo_taken_by": "Photo taken by",
+      "guest": "guest"
     },
     "no_photo": {
       "title": "Photo not found",
