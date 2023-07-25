@@ -30,6 +30,22 @@
   align-items: center;
 }
 
+.user-metadata__wrapper .dcl.filter {
+  border-radius: 34px;
+  background: #716b7c;
+  margin-left: 7px;
+  padding: 2px 8px;
+}
+
+.user-metadata__wrapper .dcl.filter span {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+  margin-left: 0;
+}
+
 .user-metadata__wrapper span,
 .user-metadata__wrapper .span,
 .user-metadata__wrapper .user-metadata__user-name {

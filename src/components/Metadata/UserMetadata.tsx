@@ -5,6 +5,7 @@ import useFeatureFlagContext from "decentraland-gatsby/dist/context/FeatureFlag/
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
+import { Filter } from "decentraland-ui/dist/components/Filter/Filter"
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon"
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic"
 
@@ -60,9 +61,12 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
           {ff.flags[FeatureFlags.HideUserProfileLink] && !loading && (
             <span>{user.userName}</span>
           )}
+          {!loading && user.isGuest && (
+            <Filter>{l("component.metadata.guest")}</Filter>
+          )}
           {loading && <LoadingText type="span" size="medium" />}
         </div>
-        {!loading && (
+        {!loading && !user.isGuest && (
           <Icon
             name={
               TokenList.join([

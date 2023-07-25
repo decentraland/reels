@@ -28,6 +28,15 @@ export type MetadataProps = {
 const USER_PROFILE_URL =
   process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.zone"
 
+const handleSort = (a: User, b: User) => {
+  if (!a.isGuest && b.isGuest) {
+    return -1
+  }
+  if (a.isGuest && !b.isGuest) {
+    return 1
+  }
+  return 0
+}
 export default React.memo(function Metadata(props: MetadataProps) {
   const { metadata, loading, className } = props
   const l = useFormatMessage()
@@ -129,7 +138,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
             {l("component.metadata.people")}
           </h1>
           <div className="metadata__user-wrapper">
-            {metadata.visiblePeople.map((user) => (
+            {metadata.visiblePeople.sort(handleSort).map((user) => (
               <UserMetadata key={user.userAddress} user={user} />
             ))}
           </div>
