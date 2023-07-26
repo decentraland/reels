@@ -102,19 +102,21 @@ export default React.memo(function Metadata(props: MetadataProps) {
         {loading && <LoadingText type="p" size="small" />}
         {!loading && metadata && (
           <div className="metadata__place">
-            <Icon name="map marker alternate" />{" "}
-            {placeUrl && (
-              <Link href={placeUrl}>
-                {metadata.scene.name} - {metadata.scene.location.x},
-                {metadata.scene.location.y}
-              </Link>
-            )}
-            {!placeUrl && (
-              <span>
-                {metadata.scene.name} - {metadata.scene.location.x},
-                {metadata.scene.location.y}
-              </span>
-            )}
+            <div className="metadata__place--wrapper">
+              <Icon name="map marker alternate" />{" "}
+              {placeUrl && (
+                <Link href={placeUrl}>
+                  {metadata.scene.name} - {metadata.scene.location.x},
+                  {metadata.scene.location.y}
+                </Link>
+              )}
+              {!placeUrl && (
+                <span>
+                  {metadata.scene.name} - {metadata.scene.location.x},
+                  {metadata.scene.location.y}
+                </span>
+              )}
+            </div>
             <Button
               primary
               as="a"

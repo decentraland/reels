@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from "react"
 
 import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
+import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
@@ -54,28 +55,37 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
     [image, track, isBadgeVisible]
   )
 
+  const [blobImage, blobImageState] = useAsyncMemo(
+    async () => {
+      const response = await fetch(image.url)
+      return await response.blob()
+    },
+    [image],
+    {
+      callWithTruthyDeps: true,
+    }
+  )
   const handleDownload = useCallback(
     async (e) => {
       e.preventDefault()
-      track(SegmentImage.Download, { image })
+      if (blobImage) {
+        track(SegmentImage.Download, { image })
 
-      const response = await fetch(image.url)
+        const href = URL.createObjectURL(blobImage)
 
-      const blobImage = await response.blob()
+        const anchorElement = document.createElement("a")
+        anchorElement.href = href
+        anchorElement.target = "_blank"
+        anchorElement.download = `${image.metadata.userName}-${image.metadata.dateTime}.jpg`
 
-      const href = URL.createObjectURL(blobImage)
+        document.body.appendChild(anchorElement)
+        anchorElement.click()
 
-      const anchorElement = document.createElement("a")
-      anchorElement.href = href
-      anchorElement.download = `${image.metadata.userName}-${image.metadata.dateTime}.jpg`
-
-      document.body.appendChild(anchorElement)
-      anchorElement.click()
-
-      document.body.removeChild(anchorElement)
-      window.URL.revokeObjectURL(href)
+        document.body.removeChild(anchorElement)
+        window.URL.revokeObjectURL(href)
+      }
     },
-    [image, track]
+    [image, blobImage, track]
   )
 
   if (loading) return <></>
@@ -90,7 +100,9 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
       >
         <img src={linkIcon} alt="Link" onClick={handleCopyLink} />
       </div>
-      <img src={downloadIcon} alt="Download" onClick={handleDownload} />
+      {blobImageState.loaded && (
+        <img src={downloadIcon} alt="Download" onClick={handleDownload} />
+      )}
       <div className="image-actions__spacer" />
       <img src={infoIcon} alt="Info" className="info" onClick={onClick} />
     </div>
