@@ -14,6 +14,7 @@
   margin-top: 32px;
   margin-left: 16px;
   color: #fcfcfc;
+  width: 495px;
 }
 
 .metadata__people-container {
@@ -64,6 +65,7 @@
   display: flex;
   height: 34px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .metadata__place i.icon {
@@ -82,12 +84,6 @@
   line-height: 20px;
 }
 
-.metadata__place .ui.loading.loading.loading.loading.loading.loading.button,
-.metadata__place .button {
-  position: absolute;
-  right: 61.5px;
-}
-
 .metadata__place .button {
   padding: 8px 16.5px;
 }
@@ -104,6 +100,7 @@
   .metadata__wrapper {
     margin-left: 24px;
     margin-right: 24px;
+    width: calc(100% - 48px);
   }
 
   .metadata__container {
@@ -146,5 +143,6 @@
   .metadata__wrapper {
     margin-left: 16px;
     margin-right: 26px;
+    width: calc(100% - 42px);
   }
 }
