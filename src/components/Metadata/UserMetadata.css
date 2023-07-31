@@ -16,6 +16,9 @@
 
 .user-metadata__container i {
   cursor: pointer;
+  padding: 40px;
+  margin-right: -25px;
+  margin-top: -20px;
 }
 
 .user-metadata:first-of-type .user-metadata__container {
