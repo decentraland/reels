@@ -38,12 +38,11 @@ export default React.memo(function ImageViewer(props: ImageViewerProps) {
         showMetadata && "show-metadata",
       ])}
     >
-      <div
-        className="image-viewer__image"
-        style={{
-          backgroundImage: !loading && image?.url ? `url(${image.url})` : "",
-        }}
-      >
+      <div className="image-viewer__image">
+        {!loading && image.url && (
+          <img src={image.url} alt={image.metadata.scene.name} />
+        )}
+        <div className="image-viewer__gradient" />
         {loading && <Loader size="big" active />}
       </div>
       <ImageActions

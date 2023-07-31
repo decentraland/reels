@@ -20,7 +20,35 @@
   width: 80px;
   height: 80px;
   border-radius: 10px;
-  background: #d9d9d9;
+  background-color: var(--common);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.common {
+  background-color: var(--common);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.uncommon {
+  background-color: var(--uncommon);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.rare {
+  background-color: var(--rare);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.epic {
+  background-color: var(--epic);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.legendary {
+  background-color: var(--legendary);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.mythic {
+  background-color: var(--mythic);
+}
+
+.wearable-metadata__container .wearable-metadata__image-container.unique {
+  background: var(--unique);
 }
 
 .wearable-metadata__container .wearable-metadata__image-container img {

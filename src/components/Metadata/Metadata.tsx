@@ -106,7 +106,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
               <Icon name="map marker alternate" />{" "}
               {placeUrl && (
                 <Link href={placeUrl}>
-                  {metadata.scene.name} - {metadata.scene.location.x},
+                  {metadata.scene.name} {metadata.scene.location.x},
                   {metadata.scene.location.y}
                 </Link>
               )}
