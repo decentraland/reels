@@ -43,3 +43,15 @@
   top: 27px;
   right: 45px;
 }
+
+@media only screen and (max-width: 991px) {
+  .image-viewer__container .image-actions {
+    right: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .image-viewer__container .image-actions {
+    right: 26px;
+  }
+}
