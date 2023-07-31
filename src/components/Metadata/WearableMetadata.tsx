@@ -38,7 +38,12 @@ export default React.memo(function WearableMetadata(
       href={marketplaceUrl}
       className={TokenList.join(["wearable-metadata__container", className])}
     >
-      <div className="wearable-metadata__image-container">
+      <div
+        className={TokenList.join([
+          "wearable-metadata__image-container",
+          props.wearableContentEntity.metadata.rarity,
+        ])}
+      >
         <img src={thumbnailUrl} />
       </div>
       <span>{wearableContentEntity.metadata.name}</span>
