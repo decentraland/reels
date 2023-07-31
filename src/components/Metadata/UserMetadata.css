@@ -7,11 +7,11 @@
   padding-right: 0;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-left: 16px;
+  margin-left: 60px;
   margin-right: auto;
   border-top: 1px solid #716b7c;
   color: #fcfcfc;
-  width: 495px;
+  width: calc(561px - 120px);
 }
 
 .user-metadata__container i {

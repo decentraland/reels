@@ -12,9 +12,9 @@
 
 .metadata__wrapper {
   margin-top: 32px;
-  margin-left: 16px;
+  margin-left: 60px;
   color: #fcfcfc;
-  width: 495px;
+  width: calc(561px - 120px);
 }
 
 .metadata__people-container {
@@ -47,7 +47,7 @@
 
 .metadata__title-people {
   padding-bottom: 20px;
-  margin-left: 16px;
+  margin-left: 60px;
 }
 
 .metadata__container h1.metadata__title:nth-child(1) {
@@ -103,12 +103,16 @@
     width: calc(100% - 48px);
   }
 
+  .metadata__title-people {
+    margin-left: 24px;
+  }
+
   .metadata__container {
     position: relative;
   }
 
   .image-viewer__container {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     position: relative;
     -webkit-transition: height 0.35s;
@@ -132,6 +136,7 @@
     -o-transition: height 0.35s;
     transition: height 0.35s;
     overflow: hidden;
+    height: auto;
   }
 
   .image-viewer__container:not(.show-metadata) + .metadata__container {
