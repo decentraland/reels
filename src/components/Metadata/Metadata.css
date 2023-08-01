@@ -12,9 +12,9 @@
 
 .metadata__wrapper {
   margin-top: 32px;
-  margin-left: 60px;
+  margin-left: 24px;
   color: #fcfcfc;
-  width: calc(561px - 120px);
+  width: calc(561px - 48px);
 }
 
 .metadata__people-container {
@@ -47,7 +47,7 @@
 
 .metadata__title-people {
   padding-bottom: 20px;
-  margin-left: 60px;
+  margin-left: 24px;
 }
 
 .metadata__container h1.metadata__title:nth-child(1) {

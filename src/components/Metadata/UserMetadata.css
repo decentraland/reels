@@ -7,11 +7,11 @@
   padding-right: 0;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-left: 60px;
+  margin-left: 24px;
   margin-right: auto;
   border-top: 1px solid #716b7c;
   color: #fcfcfc;
-  width: calc(561px - 120px);
+  width: calc(561px - 48px);
 }
 
 .user-metadata__container i {
@@ -77,10 +77,10 @@
 .user-metadata__wearable-container {
   display: flex;
   flex-direction: column;
-  margin-left: 60px;
+  margin-left: 24px;
   margin-right: auto;
   margin-top: 10px;
-  width: calc(561px - 120px);
+  width: calc(561px - 48px);
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;
