@@ -1,11 +1,15 @@
 import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
-import { ContentEntityWearable } from "decentraland-gatsby/dist/utils/api/Catalyst.types"
 
 import { Image } from "../@types/image"
 import ReelService from "../api/ReelService"
+import { WearableParsedProps, getWearablesList } from "../modules/utils"
 
-const CATALYST_URL =
-  process.env.GATSBY_CATALYST_URL || "https://peer.decentraland.org"
+const THE_GRAPH_API_ETH_URL =
+  process.env.GATSBY_THE_GRAPH_API_ETH_URL ||
+  "https://api.thegraph.com/subgraphs/name/decentraland/collections-ethereum-mainnet"
+const THE_GRAPH_API_MATIC_URL =
+  process.env.GATSBY_THE_GRAPH_API_MATIC_URL ||
+  "https://api.thegraph.com/subgraphs/name/decentraland/collections-matic-mainnet"
 
 export default function useImageById(id: string | undefined) {
   return useAsyncMemo(
@@ -26,37 +30,41 @@ export default function useImageById(id: string | undefined) {
           .flat()
 
         if (urns.length > 0) {
-          const response = await fetch(
-            `${CATALYST_URL}/content/entities/active`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                pointers: urns,
-              }),
-            }
+          const urnsL1 = urns.filter((urn) =>
+            urn.startsWith("urn:decentraland:ethereum")
+          )
+          const urnsL2 = urns.filter(
+            (urn) => !urn.startsWith("urn:decentraland:matic")
           )
 
-          const wearablesResult: ContentEntityWearable[] = await response.json()
+          const wearablesL1 =
+            urnsL1.length > 0
+              ? await getWearablesList(THE_GRAPH_API_ETH_URL, urnsL1)
+              : []
 
-          const wearablesByUrn = wearablesResult.reduce(
+          const wearablesL2 =
+            urnsL2.length > 0
+              ? await getWearablesList(THE_GRAPH_API_MATIC_URL, urnsL2)
+              : []
+
+          const wearables = wearablesL1.concat(wearablesL2)
+
+          const wearablesByUrn = wearables.reduce(
             (acc, wearable) => ({
               ...acc,
-              [wearable.pointers[0]]: wearable,
+              [wearable.urn]: wearable,
             }),
-            {} as Record<string, ContentEntityWearable>
+            {} as Record<string, WearableParsedProps>
           )
 
           imagesResult.metadata.visiblePeople.forEach((user) => {
-            user.wearablesContentEntity = user.wearables
+            user.wearablesParsed = user.wearables
               .map((wearable) => wearablesByUrn[wearable] || null)
               .filter((wearable) => wearable !== null)
           })
         } else {
           imagesResult.metadata.visiblePeople.forEach((user) => {
-            user.wearablesContentEntity = []
+            user.wearablesParsed = []
           })
         }
         return imagesResult

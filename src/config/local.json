@@ -6,5 +6,7 @@
   "GATSBY_PLACES_URL": "https://places.decentraland.org",
   "GATSBY_MARKETPLACE_URL": "https://market.decentraland.org",
   "GATSBY_USER_PROFILE_URL": "https://profile.decentraland.zone",
-  "GATSBY_SHORT_URL": "https://dcl.gg"
+  "GATSBY_SHORT_URL": "https://dcl.gg",
+  "GATSBY_THE_GRAPH_API_ETH_URL": "https://api.thegraph.com/subgraphs/name/decentraland/collections-ethereum-mainnet",
+  "GATSBY_THE_GRAPH_API_MATIC_URL": "https://api.thegraph.com/subgraphs/name/decentraland/collections-matic-mainnet"
 }

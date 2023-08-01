@@ -1,11 +1,9 @@
-import { ContentEntityWearable } from "decentraland-gatsby/dist/utils/api/Catalyst.types"
-
 export type User = {
   userName: string
   userAddress: string
   isGuest: boolean
   wearables: string[]
-  wearablesContentEntity?: ContentEntityWearable[]
+  wearablesParsed?: WearableParsedProps[]
 }
 
 export type Metadata = {

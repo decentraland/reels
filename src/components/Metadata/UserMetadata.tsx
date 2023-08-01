@@ -78,27 +78,23 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
           />
         )}
       </div>
-      {!loading && user.wearablesContentEntity && (
+      {!loading && user.wearablesParsed && (
         <div
           className={TokenList.join([
             "user-metadata__wearable-container",
             showWearables ? "wearable-metadata__wearable--show" : "",
           ])}
         >
-          {user.wearablesContentEntity.length > 0 && (
+          {user.wearablesParsed.length > 0 && (
             <h1 className="wearable-title">
               {l("component.metadata.wearable")}
             </h1>
           )}
-          {user.wearablesContentEntity.length > 0 &&
-            user.wearablesContentEntity.map((wearable, key) => (
-              <WearableMetadata
-                key={key}
-                wearableUrn={wearable.pointers[0]}
-                wearableContentEntity={wearable}
-              />
+          {user.wearablesParsed.length > 0 &&
+            user.wearablesParsed.map((wearable, key) => (
+              <WearableMetadata key={key} wearableParsed={wearable} />
             ))}
-          {user.wearablesContentEntity.length === 0 && (
+          {user.wearablesParsed.length === 0 && (
             <div className="no-wearables">
               <img src={NoWearable} />
               <p>{l("component.metadata.no_wearable")}</p>
