@@ -33,8 +33,8 @@ export default function useImageById(id: string | undefined) {
           const urnsL1 = urns.filter((urn) =>
             urn.startsWith("urn:decentraland:ethereum")
           )
-          const urnsL2 = urns.filter(
-            (urn) => !urn.startsWith("urn:decentraland:matic")
+          const urnsL2 = urns.filter((urn) =>
+            urn.startsWith("urn:decentraland:matic")
           )
 
           const wearablesL1 =
