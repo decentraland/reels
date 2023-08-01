@@ -12,6 +12,9 @@
     "/video/*",
     "/static/*",
     "/*.js.map",
-    "/*.css.map"
+    "/*.css.map",
+    "/*.png",
+    "/*.svg",
+    "/*.ico"
   ]
 }
