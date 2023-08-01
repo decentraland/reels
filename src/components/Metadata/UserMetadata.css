@@ -77,10 +77,10 @@
 .user-metadata__wearable-container {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 60px;
   margin-right: auto;
   margin-top: 10px;
-  width: 495px;
+  width: calc(561px - 120px);
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;
