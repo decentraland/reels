@@ -35,3 +35,95 @@ export async function getPlacesUrl(
   }
   return `${PLACES_URL}/place/?position=${metadata.scene.location.x},${metadata.scene.location.y}`
 }
+
+const getWearableQuery = (ids: string[]) => `
+  query {
+    items(where: {urn_in: ${JSON.stringify(ids)}}) {
+      id
+      collection {
+        id
+      }
+      blockchainId
+      image
+      urn
+      metadata {
+        wearable {
+          name
+          rarity
+        }
+        emote {
+          name
+          rarity
+        }
+      }
+    }
+  }
+`
+
+type WearableProps = {
+  id: string
+  collection: {
+    id: string
+  }
+  blockchainId: string
+  image: string
+  urn: string
+  metadata: {
+    wearable: {
+      name: string
+      rarity: string
+    }
+    emote: {
+      name: string
+      rarity: string
+    }
+  }
+}
+
+export type WearableParsedProps = {
+  id: string
+  collection: string
+  blockchainId: string
+  image: string
+  urn: string
+  name: string
+  rarity: string
+}
+
+function parseWearables(wearables: WearableProps[]): WearableParsedProps[] {
+  return wearables.map((wearable) => ({
+    id: wearable.id,
+    collection: wearable.collection.id,
+    blockchainId: wearable.blockchainId,
+    image: wearable.image,
+    urn: wearable.urn,
+    name: wearable.metadata.wearable.name || wearable.metadata.emote.name,
+    rarity: wearable.metadata.wearable.rarity || wearable.metadata.emote.rarity,
+  }))
+}
+
+export async function getWearablesList(
+  url: string,
+  ids: string[]
+): Promise<WearableParsedProps[]> {
+  const query = getWearableQuery(ids)
+  const graphql = JSON.stringify({
+    query,
+    variables: {},
+  })
+
+  const myHeaders = new Headers()
+  myHeaders.append("Content-Type", "application/json")
+
+  const requestOptions: RequestInit = {
+    method: "POST",
+    headers: myHeaders,
+    body: graphql,
+    redirect: "follow",
+  }
+
+  const wearableResponse = await fetch(url, requestOptions)
+  const wearableJson: { data: { items: WearableProps[] } } =
+    await wearableResponse.json()
+  return parseWearables(wearableJson.data.items)
+}
