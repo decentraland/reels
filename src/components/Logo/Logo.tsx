@@ -4,7 +4,7 @@ import DclLogo from "decentraland-gatsby/static/decentraland.svg"
 
 import DclText from "../../images/dcl-text.svg"
 
-import "./index.css"
+import "./Logo.css"
 
 export default React.memo(function Logo() {
   return (
