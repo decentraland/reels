@@ -1,0 +1,24 @@
+.logo-container {
+  height: 56px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 30px;
+  height: 30px;
+  color: #fcfcfc;
+  margin-left: 25px;
+}
+
+.logo-text {
+  height: 15.066px;
+  margin-left: 8px;
+}
+
+@media only screen and (max-width: 767px) {
+  .logo-text {
+    display: none;
+  }
+}

@@ -21,6 +21,12 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+.metadata__container .logo-container {
+  height: 56px;
+  background: #3d3b43;
+  display: flex;
+  align-items: center;
+}
 
 .metadata__container h1.metadata__title,
 .metadata__title-people {
@@ -141,6 +147,10 @@
 
   .image-viewer__container:not(.show-metadata) + .metadata__container {
     height: 0;
+  }
+
+  .metadata__container .logo-container {
+    display: none;
   }
 }
 

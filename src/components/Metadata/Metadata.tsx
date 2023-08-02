@@ -16,6 +16,7 @@ import { FeatureFlags } from "../../modules/ff"
 import { SegmentImage } from "../../modules/segment"
 import { getExplorerUrl, getPlacesUrl } from "../../modules/utils"
 import LoadingText from "../Loading/LoadingText"
+import Logo from "../Logo/Logo"
 
 import "./Metadata.css"
 
@@ -63,6 +64,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
 
   return (
     <div className={TokenList.join(["metadata__container", className])}>
+      <Logo />
       <div className="metadata__wrapper">
         {!loading && (
           <h1 className="metadata__title">{l("component.metadata.title")}</h1>

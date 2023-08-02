@@ -44,9 +44,21 @@
   right: 45px;
 }
 
+.image-viewer__container .logo-container {
+  display: none;
+}
+
 @media only screen and (max-width: 991px) {
   .image-viewer__container .image-actions {
     right: 24px;
+  }
+
+  .image-viewer__container .logo-container {
+    position: absolute;
+    display: flex;
+    top: 26px;
+    background: transparent;
+    height: fit-content;
   }
 }
 
