@@ -7,6 +7,7 @@ import { Loader } from "decentraland-ui/dist/components/Loader/Loader"
 import { Image } from "../../@types/image"
 import { SegmentImage } from "../../modules/segment"
 import ImageActions from "../ImageActions/ImageActions"
+import Logo from "../Logo/Logo"
 
 import "./ImageViewer.css"
 
@@ -45,6 +46,7 @@ export default React.memo(function ImageViewer(props: ImageViewerProps) {
         <div className="image-viewer__gradient" />
         {loading && <Loader size="big" active />}
       </div>
+      <Logo />
       <ImageActions
         image={image}
         onClick={handleShowMetadata}
