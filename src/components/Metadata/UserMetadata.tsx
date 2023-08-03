@@ -38,7 +38,10 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
   const [ff] = useFeatureFlagContext()
 
   const profileUrl = useMemo(
-    () => (user?.userAddress ? `${USER_PROFILE_URL}/${user.userAddress}` : ""),
+    () =>
+      user?.userAddress
+        ? `${USER_PROFILE_URL}/accounts/${user.userAddress}`
+        : "",
     [user]
   )
 

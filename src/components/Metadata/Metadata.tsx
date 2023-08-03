@@ -53,7 +53,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
   const profileUrl = useMemo(
     () =>
       metadata?.userAddress
-        ? `${USER_PROFILE_URL}/${metadata.userAddress}`
+        ? `${USER_PROFILE_URL}/accounts/${metadata.userAddress}`
         : "",
     [metadata]
   )
