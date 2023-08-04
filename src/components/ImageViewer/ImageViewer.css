@@ -40,7 +40,7 @@
 
 .image-viewer__container .image-actions {
   position: absolute;
-  top: 27px;
+  top: 13px;
   right: 45px;
 }
 
@@ -50,6 +50,7 @@
 
 @media only screen and (max-width: 991px) {
   .image-viewer__container .image-actions {
+    top: 27px;
     right: 24px;
   }
 
