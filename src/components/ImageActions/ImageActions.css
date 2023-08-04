@@ -29,7 +29,7 @@
 }
 
 .image-actions .link-copy::after {
-  content: "copied!";
+  content: "Copied!";
   background-color: #716b7c;
   color: #fff;
   position: absolute;
