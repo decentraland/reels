@@ -18,8 +18,26 @@
   opacity: 0.8;
 }
 
-.image-actions img.info {
+.image-actions .image-actions__image {
   width: 24px;
+  height: 24px;
+  padding: 1px;
+  cursor: pointer;
+  margin-left: 10px;
+  display: flex;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-viewer__container.show-metadata .image-actions .image-actions__image {
+  background-color: #42404a;
+}
+
+.image-actions img.info {
+  margin-left: 0;
+  margin-right: 0;
+  width: 22px;
 }
 
 .image-actions .link-copy {
