@@ -104,7 +104,9 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
         <img src={downloadIcon} alt="Download" onClick={handleDownload} />
       )}
       <div className="image-actions__spacer" />
-      <img src={infoIcon} alt="Info" className="info" onClick={onClick} />
+      <div className="image-actions__image" onClick={onClick}>
+        <img src={infoIcon} alt="Info" className="info" />
+      </div>
     </div>
   )
 })

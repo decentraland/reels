@@ -32,7 +32,6 @@ export default function ImagePage({
             ? `${photo.metadata.userName} took this photo in ${photo.metadata.scene.name}`
             : l("component.no_photo.title")}
         </title>
-        <meta name="description" content={"image description"} />
       </Helmet>
       <div>
         <ImageViewer image={photo!} loading={loading} />
