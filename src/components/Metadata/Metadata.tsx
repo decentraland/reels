@@ -88,12 +88,13 @@ export default React.memo(function Metadata(props: MetadataProps) {
           {!loading && (
             <span>
               {l("component.metadata.photo_taken_by")}{" "}
-              {!ff.flags[FeatureFlags.HideUserProfileLink] && (
+              {ff.flags[FeatureFlags.ShowUserProfileLink] && (
                 <Link className="metadata__user-name" href={profileUrl}>
                   {metadata?.userName}
                 </Link>
               )}
-              {ff.flags[FeatureFlags.HideUserProfileLink] && metadata?.userName}
+              {!ff.flags[FeatureFlags.ShowUserProfileLink] &&
+                metadata?.userName}
             </span>
           )}
           {loading && <LoadingText type="span" size="medium" />}
