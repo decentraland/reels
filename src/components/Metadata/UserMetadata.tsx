@@ -56,12 +56,12 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
             address={user.userAddress}
             loading={loading}
           />{" "}
-          {!ff.flags[FeatureFlags.HideUserProfileLink] && !loading && (
+          {ff.flags[FeatureFlags.ShowUserProfileLink] && !loading && (
             <Link className="user-metadata__user-name" href={profileUrl}>
               {user.userName}
             </Link>
           )}
-          {ff.flags[FeatureFlags.HideUserProfileLink] && !loading && (
+          {!ff.flags[FeatureFlags.ShowUserProfileLink] && !loading && (
             <span>{user.userName}</span>
           )}
           {!loading && user.isGuest && (
