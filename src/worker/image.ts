@@ -1,7 +1,12 @@
+import env from "decentraland-gatsby/dist/utils/env"
+
 import { OpenGraphWriterOptions } from "./writer"
 import { Image } from "../@types/image"
 
-const REEL_SERVICE_URL = "https://camera-reel-service.decentraland.zone"
+const REEL_SERVICE_URL = env(
+  `REEL_SERVICE_URL`,
+  `https://camera-reel-service.decentraland.org`
+)
 
 export async function getImageOpenGraph(imageId: string) {
   try {
