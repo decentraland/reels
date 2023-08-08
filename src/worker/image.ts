@@ -1,5 +1,3 @@
-import env from "decentraland-gatsby/dist/utils/env"
-
 import { OpenGraphWriterOptions } from "./writer"
 import { Image } from "../@types/image"
 

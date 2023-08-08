@@ -4,11 +4,13 @@ main = "src/_worker.ts"
 compatibility_date = "2023-03-14"
 send_metrics = false
 
-workers_dev = false
+workers_dev = true
 route = { pattern = "reels.decentraland.zone/*", zone_name = "reels.decentraland.zone" }
 tsconfig = "./tsconfig.worker.json"
 vars = { REEL_SERVICE_URL = "https://camera-reel-service.decentraland.zone" }
 
 [env.production]
+workers_dev = false
 vars = { REEL_SERVICE_URL = "https://camera-reel-service.decentraland.org" }
+tsconfig = "./tsconfig.worker.json"
 route = { pattern = "reels.decentraland.org/*" }
