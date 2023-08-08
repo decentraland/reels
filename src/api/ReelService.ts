@@ -13,7 +13,7 @@ export type FetchListResult = {
 export default class ReelService extends API {
   static Url = env(
     `REEL_SERVICE_URL`,
-    `https://camera-reel-service.decentraland.zone`
+    `https://camera-reel-service.decentraland.org`
   )
 
   static Cache = new Map<string, ReelService>()

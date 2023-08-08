@@ -11,7 +11,10 @@ const router = new WorkerRouter<RouteContextWithAssets>()
   .get("/:id", async (req, ctx) => {
     const [asset, openGraph] = await Promise.all([
       fetchAsset("/[image_id]", req, ctx),
-      getImageOpenGraph(ctx.match.pathname.groups.id!),
+      getImageOpenGraph(
+        ctx.match.pathname.groups.id!,
+        ctx.env.REEL_SERVICE_URL
+      ),
     ])
 
     return attachOpenGraph(asset, openGraph)
