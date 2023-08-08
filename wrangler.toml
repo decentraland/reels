@@ -7,8 +7,3 @@ send_metrics = false
 workers_dev = false
 route = { pattern = "reels.decentraland.zone/*", zone_name = "reels.decentraland.zone" }
 tsconfig = "./tsconfig.worker.json"
-vars = { REEL_SERVICE_URL = "https://camera-reel-service.decentraland.zone" }
-
-[env.production]
-vars = { REEL_SERVICE_URL = "https://camera-reel-service.decentraland.org" }
-route = { pattern = "reels.decentraland.org/*" }
