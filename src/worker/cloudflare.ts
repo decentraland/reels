@@ -3,7 +3,7 @@ import { OpenGraphWriter, OpenGraphWriterOptions } from "./writer"
 import type { RouteContext } from "@worker-tools/router"
 
 export type RouteContextWithAssets = RouteContext & {
-  env: { ASSETS: { fetch: typeof fetch } }
+  env: { ASSETS: { fetch: typeof fetch }; REEL_SERVICE_URL: string }
 }
 
 export async function fetchAsset(
