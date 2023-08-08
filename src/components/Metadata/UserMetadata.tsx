@@ -2,6 +2,7 @@ import React, { useMemo } from "react"
 
 import Avatar from "decentraland-gatsby/dist/components/Profile/Avatar"
 import useFeatureFlagContext from "decentraland-gatsby/dist/context/FeatureFlag/useFeatureFlagContext"
+import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
@@ -13,6 +14,7 @@ import WearableMetadata from "./WearableMetadata"
 import { User } from "../../@types/image"
 import NoWearable from "../../images/wearable-shirt.svg"
 import { FeatureFlags } from "../../modules/ff"
+import { SegmentImage } from "../../modules/segment"
 import LoadingText from "../Loading/LoadingText"
 
 import "./UserMetadata.css"
@@ -28,12 +30,17 @@ const USER_PROFILE_URL =
 
 export default React.memo(function UserMetadata(props: UserMetadataProps) {
   const { user, loading, className } = props
+  const track = useTrackContext()
 
   const [showWearables, setShowWearables] = React.useState(false)
 
   const toggleWearables = React.useCallback(() => {
+    track(
+      showWearables ? SegmentImage.HideWearables : SegmentImage.ShowWearables,
+      { user }
+    )
     setShowWearables(!showWearables)
-  }, [showWearables])
+  }, [showWearables, track, user])
 
   const [ff] = useFeatureFlagContext()
 
