@@ -92,7 +92,12 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
 
   return (
     <div className={TokenList.join(["image-actions", className])}>
-      <Link href={twitterLink} target="_blank" rel="noopener noreferrer">
+      <Link
+        href={twitterLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event={SegmentImage.Share}
+      >
         <img src={twitterIcon} alt="Twitter" />
       </Link>
       <div
