@@ -1,7 +1,8 @@
-import React, { useMemo } from "react"
+import React, { useCallback, useMemo } from "react"
 
 import Avatar from "decentraland-gatsby/dist/components/Profile/Avatar"
 import useFeatureFlagContext from "decentraland-gatsby/dist/context/FeatureFlag/useFeatureFlagContext"
+import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
 import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
 import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
@@ -27,7 +28,7 @@ export type MetadataProps = {
 }
 
 const USER_PROFILE_URL =
-  process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.zone"
+  process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.org"
 
 const handleSort = (a: User, b: User) => {
   if (!a.isGuest && b.isGuest) {
@@ -38,9 +39,11 @@ const handleSort = (a: User, b: User) => {
   }
   return 0
 }
+
 export default React.memo(function Metadata(props: MetadataProps) {
   const { metadata, loading, className } = props
   const l = useFormatMessage()
+  const track = useTrackContext()
 
   const [placeUrl] = useAsyncMemo(
     async () => getPlacesUrl(metadata),
@@ -61,6 +64,29 @@ export default React.memo(function Metadata(props: MetadataProps) {
   const [ff] = useFeatureFlagContext()
 
   const jumpInUrl = useMemo(() => getExplorerUrl(metadata), [metadata])
+
+  const handleUserProfile = useCallback(() => {
+    track(SegmentImage.ClickProfile, {
+      metadata,
+      profileUrl,
+    })
+  }, [metadata, profileUrl, track])
+
+  const handleJumpIn = useCallback(() => {
+    track(SegmentImage.JumpIn, {
+      jumpInUrl,
+      metadata,
+    })
+  }, [jumpInUrl, metadata, track])
+
+  const handlePlace = useCallback(() => {
+    track(SegmentImage.ClickPlace, {
+      placeUrl: placeUrl,
+      placename: metadata.scene.name,
+      placeLocation: metadata.scene.location,
+      metadata,
+    })
+  }, [placeUrl, metadata.scene.name, metadata.scene.location, track])
 
   return (
     <div className={TokenList.join(["metadata__container", className])}>
@@ -89,7 +115,11 @@ export default React.memo(function Metadata(props: MetadataProps) {
             <span>
               {l("component.metadata.photo_taken_by")}{" "}
               {ff.flags[FeatureFlags.ShowUserProfileLink] && (
-                <Link className="metadata__user-name" href={profileUrl}>
+                <Link
+                  className="metadata__user-name"
+                  href={profileUrl}
+                  onClick={handleUserProfile}
+                >
                   {metadata?.userName}
                 </Link>
               )}
@@ -108,7 +138,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
             <div className="metadata__place--wrapper">
               <Icon name="map marker alternate" />{" "}
               {placeUrl && (
-                <Link href={placeUrl}>
+                <Link href={placeUrl} onClick={handlePlace}>
                   {metadata.scene.name} {metadata.scene.location.x},
                   {metadata.scene.location.y}
                 </Link>
@@ -125,8 +155,7 @@ export default React.memo(function Metadata(props: MetadataProps) {
               as="a"
               href={jumpInUrl}
               target="_blank"
-              data-event={SegmentImage.JumpIn}
-              data-scene={`${metadata.scene.location.x},${metadata?.scene.location.y}`}
+              onClick={handleJumpIn}
               loading={loading}
             >
               {l("component.metadata.jump_in")}

@@ -55,6 +55,10 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
     [image, track, isBadgeVisible]
   )
 
+  const handleShare = useCallback(() => {
+    track(SegmentImage.Share, { image, link: twitterLink })
+  }, [image, track, isBadgeVisible])
+
   const [blobImage, blobImageState] = useAsyncMemo(
     async () => {
       const response = await fetch(image.url)
@@ -65,6 +69,7 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
       callWithTruthyDeps: true,
     }
   )
+
   const handleDownload = useCallback(
     async (e) => {
       e.preventDefault()
@@ -96,7 +101,7 @@ export default React.memo(function ImageActions(props: ImageActionsProps) {
         href={twitterLink}
         target="_blank"
         rel="noopener noreferrer"
-        data-event={SegmentImage.Share}
+        onClick={handleShare}
       >
         <img src={twitterIcon} alt="Twitter" />
       </Link>

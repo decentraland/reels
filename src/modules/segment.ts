@@ -8,4 +8,8 @@ export enum SegmentImage {
   ShowWearables = "Show Wearables",
   HideWearables = "Hide Wearables",
   ImageNotFound = "Image Not Found",
+  ClickWearable = "Click Wearable",
+  ClickProfile = "Click Profile",
+  ClickPlace = "Click Place",
+  ClickDclLogo = "Click Decentraland Logo",
 }

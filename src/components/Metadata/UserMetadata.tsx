@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useCallback, useMemo } from "react"
 
 import Avatar from "decentraland-gatsby/dist/components/Profile/Avatar"
 import useFeatureFlagContext from "decentraland-gatsby/dist/context/FeatureFlag/useFeatureFlagContext"
@@ -52,6 +52,13 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
     [user]
   )
 
+  const handleUserProfile = useCallback(() => {
+    track(SegmentImage.ClickWearable, {
+      user,
+      profileUrl,
+    })
+  }, [user, profileUrl, track])
+
   const l = useFormatMessage()
   return (
     <div className={TokenList.join(["user-metadata", className])}>
@@ -64,7 +71,11 @@ export default React.memo(function UserMetadata(props: UserMetadataProps) {
             loading={loading}
           />{" "}
           {ff.flags[FeatureFlags.ShowUserProfileLink] && !loading && (
-            <Link className="user-metadata__user-name" href={profileUrl}>
+            <Link
+              className="user-metadata__user-name"
+              href={profileUrl}
+              onClick={handleUserProfile}
+            >
               {user.userName}
             </Link>
           )}
