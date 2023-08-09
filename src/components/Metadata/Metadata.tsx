@@ -82,11 +82,10 @@ export default React.memo(function Metadata(props: MetadataProps) {
   const handlePlace = useCallback(() => {
     track(SegmentImage.ClickPlace, {
       placeUrl: placeUrl,
-      placename: metadata.scene.name,
-      placeLocation: metadata.scene.location,
+      placeScene: metadata?.scene,
       metadata,
     })
-  }, [placeUrl, metadata.scene.name, metadata.scene.location, track])
+  }, [placeUrl, metadata?.scene, track])
 
   return (
     <div className={TokenList.join(["metadata__container", className])}>
