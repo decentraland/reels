@@ -126,7 +126,6 @@ export default React.memo(function Metadata(props: MetadataProps) {
                 metadata?.userName}
             </span>
           )}
-          {loading && <LoadingText type="span" size="medium" />}
         </div>
         {!loading && (
           <h1 className="metadata__title">{l("component.metadata.place")}</h1>
