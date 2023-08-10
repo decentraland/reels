@@ -1,6 +1,7 @@
 .wearable-metadata__container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.1);
@@ -14,6 +15,20 @@
 
 .wearable-metadata__container:hover {
   background: #716b7c;
+}
+
+.wearable-metadata__wrapper {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 69px);
+}
+
+.wearable-metadata__container .ui.primary.button {
+  width: auto;
+  max-width: none;
+  min-width: 0;
+  padding: 8px 16.5px;
+  margin-right: 36px;
 }
 
 .wearable-metadata__container .wearable-metadata__image-container {
