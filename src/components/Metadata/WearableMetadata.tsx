@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from "react"
 import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
+import { Button } from "decentraland-ui/dist/components/Button/Button"
 
 import { SegmentImage } from "../../modules/segment"
 import { WearableParsedProps } from "../../modules/utils"
@@ -48,15 +49,18 @@ export default React.memo(function WearableMetadata(
       className={TokenList.join(["wearable-metadata__container", className])}
       onClick={handleWearableClick}
     >
-      <div
-        className={TokenList.join([
-          "wearable-metadata__image-container",
-          wearableParsed.rarity,
-        ])}
-      >
-        <img src={wearableParsed.image} />
+      <div className="wearable-metadata__wrapper">
+        <div
+          className={TokenList.join([
+            "wearable-metadata__image-container",
+            wearableParsed.rarity,
+          ])}
+        >
+          <img src={wearableParsed.image} />
+        </div>
+        <span>{wearableParsed.name}</span>
       </div>
-      <span>{wearableParsed.name}</span>
+      <Button primary>BUY</Button>
     </Link>
   )
 })

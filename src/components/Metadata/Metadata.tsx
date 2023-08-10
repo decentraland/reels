@@ -104,15 +104,15 @@ export default React.memo(function Metadata(props: MetadataProps) {
           {loading && <LoadingText type="span" size="large" />}
         </div>
         <div className="metadata__user">
-          <Avatar
-            size="medium"
-            key={metadata?.userAddress}
-            address={metadata?.userAddress}
-            loading={loading}
-          />{" "}
           {!loading && (
             <span>
-              {l("component.metadata.photo_taken_by")}{" "}
+              {l("component.metadata.photo_taken_by")}
+              <Avatar
+                size="medium"
+                key={metadata?.userAddress}
+                address={metadata?.userAddress}
+                loading={loading}
+              />{" "}
               {ff.flags[FeatureFlags.ShowUserProfileLink] && (
                 <Link
                   className="metadata__user-name"
@@ -170,8 +170,14 @@ export default React.memo(function Metadata(props: MetadataProps) {
             {l("component.metadata.people")}
           </h1>
           <div className="metadata__user-wrapper">
-            {metadata.visiblePeople.sort(handleSort).map((user) => (
-              <UserMetadata key={user.userAddress} user={user} />
+            {metadata.visiblePeople.sort(handleSort).map((user, index) => (
+              <UserMetadata
+                key={user.userAddress}
+                user={user}
+                initialWearableVisibility={
+                  index === 0 && user.wearables.length > 0
+                }
+              />
             ))}
           </div>
         </div>
