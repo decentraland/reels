@@ -17,9 +17,8 @@ export async function getImageOpenGraph(
     }
 
     const imageEntry: OpenGraphWriterOptions = {
-      title: encodeURI(
-        `${imagesResult.metadata.userName}'s Decentraland snapshot`
-      ),
+      // eslint-disable-next-line no-useless-escape
+      title: `${imagesResult.metadata.userName}\'s Decentraland snapshot`,
       description: `Check out ${imagesResult.metadata.userName}'s photo taken in ${imagesResult.metadata.scene.name}, Decentraland—comment on who was there and what they were wearing or even jump to the spot directly so you don't miss out!`,
     }
 
