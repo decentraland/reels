@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from "react"
 
 import useTrackContext from "decentraland-gatsby/dist/context/Track/useTrackContext"
+import useFormatMessage from "decentraland-gatsby/dist/hooks/useFormatMessage"
 import Link from "decentraland-gatsby/dist/plugins/intl/Link"
 import TokenList from "decentraland-gatsby/dist/utils/dom/TokenList"
 import { Button } from "decentraland-ui/dist/components/Button/Button"
@@ -22,6 +23,7 @@ export default React.memo(function WearableMetadata(
   props: WearableMetadataProps
 ) {
   const { wearableParsed, className } = props
+  const l = useFormatMessage()
   const marketplaceUrl = useMemo(
     () =>
       `${MARKETPLACE_URL}/contracts/${wearableParsed.collection}/items/${wearableParsed.blockchainId}`,
@@ -60,7 +62,7 @@ export default React.memo(function WearableMetadata(
         </div>
         <span>{wearableParsed.name}</span>
       </div>
-      <Button primary>BUY</Button>
+      <Button primary>{l("component.wearable.buy")}</Button>
     </Link>
   )
 })

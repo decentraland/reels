@@ -16,6 +16,9 @@
       "photo_taken_by": "Photo taken by",
       "guest": "guest"
     },
+    "wearable": {
+      "buy": "BUY"
+    },
     "no_photo": {
       "title": "Photo not found",
       "subtitle": "Whoops! The photo you are trying to access does not exist or is no longer available."

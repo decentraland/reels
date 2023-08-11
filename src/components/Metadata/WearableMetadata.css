@@ -20,15 +20,25 @@
 .wearable-metadata__wrapper {
   display: flex;
   align-items: center;
+  width: 100%;
+}
+
+.wearable-metadata__container:hover .wearable-metadata__wrapper {
   width: calc(100% - 69px);
+  min-width: calc(100% - 69px);
 }
 
 .wearable-metadata__container .ui.primary.button {
   width: auto;
   max-width: none;
-  min-width: 0;
+  min-width: 59px;
   padding: 8px 16.5px;
   margin-right: 36px;
+  opacity: 0;
+}
+
+.wearable-metadata__container:hover .ui.primary.button {
+  opacity: 1;
 }
 
 .wearable-metadata__container .wearable-metadata__image-container {
@@ -80,4 +90,15 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+@media only screen and (max-width: 991px) {
+  .wearable-metadata__container:hover .wearable-metadata__wrapper {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .wearable-metadata__container:hover .ui.primary.button {
+    opacity: 0;
+  }
 }
