@@ -27,7 +27,7 @@ export type UserMetadataProps = {
 }
 
 const USER_PROFILE_URL =
-  process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.zone"
+  process.env.GATSBY_USER_PROFILE_URL || "https://profile.decentraland.org"
 
 export default React.memo(function UserMetadata(props: UserMetadataProps) {
   const { user, initialWearableVisibility, loading, className } = props
