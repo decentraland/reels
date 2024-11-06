@@ -6,10 +6,10 @@ import { WearableParsedProps, getWearablesList } from "../modules/utils"
 
 const THE_GRAPH_API_ETH_URL =
   process.env.GATSBY_THE_GRAPH_API_ETH_URL ||
-  "https://api.thegraph.com/subgraphs/name/decentraland/collections-ethereum-mainnet"
+  "https://subgraph.decentraland.org/collections-ethereum-mainnet"
 const THE_GRAPH_API_MATIC_URL =
   process.env.GATSBY_THE_GRAPH_API_MATIC_URL ||
-  "https://api.thegraph.com/subgraphs/name/decentraland/collections-matic-mainnet"
+  "https://subgraph.decentraland.org/collections-matic-mainnet"
 
 export default function useImageById(id: string | undefined) {
   return useAsyncMemo(
