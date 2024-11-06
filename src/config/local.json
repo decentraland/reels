@@ -8,7 +8,7 @@
   "GATSBY_MARKETPLACE_URL": "https://market.decentraland.org",
   "GATSBY_USER_PROFILE_URL": "https://profile.decentraland.zone",
   "GATSBY_SHORT_URL": "https://dcl.gg",
-  "GATSBY_THE_GRAPH_API_ETH_URL": "https://subgraph.decentraland.zone/collections-ethereum-mainnet",
-  "GATSBY_THE_GRAPH_API_MATIC_URL": "https://subgraph.decentraland.zone/collections-matic-mainnet",
+  "GATSBY_THE_GRAPH_API_ETH_URL": "https://subgraph.decentraland.zone/collections-ethereum-sepolia",
+  "GATSBY_THE_GRAPH_API_MATIC_URL": "https://subgraph.decentraland.zone/collections-matic-amoy",
   "GATSBY_DECENTRALAND_HOMEPAGE_URL": "https://decentraland.org"
 }
