@@ -9,23 +9,22 @@ on:
       - synchronize
 
 jobs:
-
   release:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Reconfigure git to use HTTP authentication
         run: >
           git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
 
-      - name: node.js 16
-        uses: actions/setup-node@v2
+      - name: node.js 24
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.17.0
+          node-version: 24
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
+          cache: "npm"
 
       - name: installing
         run: npm ci
@@ -45,4 +44,3 @@ jobs:
       #   uses: coverallsapp/github-action@master
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
-
