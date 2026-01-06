@@ -1,3 +1,8 @@
+import {
+  getTokenIdAndAssetUrn,
+  isExtendedUrn,
+  parseUrn,
+} from "@dcl/urn-resolver"
 import useAsyncMemo from "decentraland-gatsby/dist/hooks/useAsyncMemo"
 
 import { Image } from "../@types/image"
@@ -10,6 +15,30 @@ const THE_GRAPH_API_ETH_URL =
 const THE_GRAPH_API_MATIC_URL =
   process.env.GATSBY_THE_GRAPH_API_MATIC_URL ||
   "https://subgraph.decentraland.org/collections-matic-mainnet"
+
+/**
+ * Strips the tokenId from a wearable URN if present.
+ * Extended URNs have the format: urn:decentraland:{network}:collections-v{version}:{contract}:{itemId}:{tokenId}
+ * Base URNs have the format: urn:decentraland:{network}:collections-v{version}:{contract}:{itemId}
+ * The Graph expects base URNs without the tokenId suffix.
+ */
+async function getBaseUrn(urn: string): Promise<string> {
+  try {
+    const parsed = await parseUrn(urn)
+    if (!parsed) {
+      return urn
+    }
+
+    if (isExtendedUrn(parsed)) {
+      const { assetUrn } = getTokenIdAndAssetUrn(urn)
+      return assetUrn.toString()
+    }
+
+    return urn
+  } catch {
+    return urn
+  }
+}
 
 export default function useImageById(id: string | undefined) {
   return useAsyncMemo(
@@ -30,6 +59,15 @@ export default function useImageById(id: string | undefined) {
           .flat()
 
         if (urns.length > 0) {
+          // Build the urn to base URN mapping once for all URNs
+          const urnToBaseUrn = new Map<string, string>()
+          await Promise.all(
+            urns.map(async (urn) => {
+              const baseUrn = await getBaseUrn(urn)
+              urnToBaseUrn.set(urn, baseUrn)
+            })
+          )
+
           const urnsL1 = urns.filter((urn) =>
             urn.startsWith("urn:decentraland:ethereum")
           )
@@ -37,14 +75,22 @@ export default function useImageById(id: string | undefined) {
             urn.startsWith("urn:decentraland:matic")
           )
 
+          // Derive deduplicated base URNs from the map (no extra getBaseUrn calls)
+          const baseUrnsL1 = [
+            ...new Set(urnsL1.map((urn) => urnToBaseUrn.get(urn)!)),
+          ]
+          const baseUrnsL2 = [
+            ...new Set(urnsL2.map((urn) => urnToBaseUrn.get(urn)!)),
+          ]
+
           const wearablesL1 =
-            urnsL1.length > 0
-              ? await getWearablesList(THE_GRAPH_API_ETH_URL, urnsL1)
+            baseUrnsL1.length > 0
+              ? await getWearablesList(THE_GRAPH_API_ETH_URL, baseUrnsL1)
               : []
 
           const wearablesL2 =
-            urnsL2.length > 0
-              ? await getWearablesList(THE_GRAPH_API_MATIC_URL, urnsL2)
+            baseUrnsL2.length > 0
+              ? await getWearablesList(THE_GRAPH_API_MATIC_URL, baseUrnsL2)
               : []
 
           const wearables = wearablesL1.concat(wearablesL2)
@@ -59,7 +105,10 @@ export default function useImageById(id: string | undefined) {
 
           imagesResult.metadata.visiblePeople.forEach((user) => {
             user.wearablesParsed = user.wearables
-              .map((wearable) => wearablesByUrn[wearable] || null)
+              .map((wearable) => {
+                const baseUrn = urnToBaseUrn.get(wearable) || wearable
+                return wearablesByUrn[baseUrn] || null
+              })
               .filter((wearable) => wearable !== null)
           })
         } else {
