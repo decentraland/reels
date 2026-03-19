@@ -105,19 +105,19 @@ src/
 
 Key environment variables (set per-env in `src/config/`):
 
-| Variable | Purpose |
-|---|---|
-| `REEL_SERVICE_URL` / `GATSBY_REEL_SERVICE_URL` | Camera Reel Service base URL |
-| `GATSBY_CATALYST_URL` | Catalyst peer for profile data |
-| `GATSBY_BASE_URL` | Canonical base URL for this site |
-| `GATSBY_DECENTRALAND_URL` | Decentraland Explorer URL |
-| `GATSBY_PLACES_URL` | Places API base URL |
-| `GATSBY_MARKETPLACE_URL` | Marketplace URL |
-| `GATSBY_USER_PROFILE_URL` | Profile site URL |
-| `GATSBY_SHORT_URL` | Short link domain (dcl.gg) |
-| `GATSBY_THE_GRAPH_API_ETH_URL` | Ethereum subgraph URL |
-| `GATSBY_THE_GRAPH_API_MATIC_URL` | Polygon subgraph URL |
-| `GATSBY_SEGMENT_KEY` | Segment analytics write key |
+| Variable                                       | Purpose                          |
+| ---------------------------------------------- | -------------------------------- |
+| `REEL_SERVICE_URL` / `GATSBY_REEL_SERVICE_URL` | Camera Reel Service base URL     |
+| `GATSBY_CATALYST_URL`                          | Catalyst peer for profile data   |
+| `GATSBY_BASE_URL`                              | Canonical base URL for this site |
+| `GATSBY_DECENTRALAND_URL`                      | Decentraland Explorer URL        |
+| `GATSBY_PLACES_URL`                            | Places API base URL              |
+| `GATSBY_MARKETPLACE_URL`                       | Marketplace URL                  |
+| `GATSBY_USER_PROFILE_URL`                      | Profile site URL                 |
+| `GATSBY_SHORT_URL`                             | Short link domain (dcl.gg)       |
+| `GATSBY_THE_GRAPH_API_ETH_URL`                 | Ethereum subgraph URL            |
+| `GATSBY_THE_GRAPH_API_MATIC_URL`               | Polygon subgraph URL             |
+| `GATSBY_SEGMENT_KEY`                           | Segment analytics write key      |
 
 **Testing:**
 
